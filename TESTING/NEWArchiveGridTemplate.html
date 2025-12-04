@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLD UFO MAGS // ARCHIVE INDEX</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;800&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --cyber-blue: #00f3ff;
+            --alert-orange: #ff9e00;
+            --locked-red: #ff2a2a;
+            --void-black: #050505;
+            --panel-bg: rgba(20, 20, 25, 0.6);
+            --border-dim: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--void-black);
+            color: #e0e0e0;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- BACKGROUND FX --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200vw;
+            height: 200vh;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-300px);
+            z-index: -1;
+            /* Static background for performance since we have images */
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 5vw;
+        }
+
+        header {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border-dim);
+            margin-bottom: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .header-title h1 {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .blue-text {
+            color: var(--cyber-blue);
+        }
+
+        /* --- GRID SYSTEM --- */
+        .mag-grid {
+            display: grid;
+            /* Responsive: 1 col mobile, 2 tablet, 3 small desktop, 4 large desktop */
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        /* --- MAG CARD (BASE) --- */
+        .mag-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-dim);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            backdrop-filter: blur(5px);
+            group: 'card';
+        }
+
+        .mag-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* --- IMAGE CONTAINER --- */
+        .img-wrapper {
+            width: 100%;
+            aspect-ratio: 3 / 4;
+            /* Standard Magazine Ratio */
+            overflow: hidden;
+            position: relative;
+            border-bottom: 1px solid var(--border-dim);
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        /* --- CONTENT CONTAINER --- */
+        .content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .meta-tag {
+            font-size: 0.75rem;
+            color: var(--neon-green);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .mag-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 0.8rem;
+            line-height: 1.2;
+        }
+
+        .mag-desc {
+            font-size: 0.9rem;
+            color: #888;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            /* Limit text to 3 lines */
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* --- DESIGN 1: ACTIVE MAG (AVAILABLE) --- */
+        .mag-card.active {
+            cursor: pointer;
+        }
+
+        .mag-card.active:hover {
+            border-color: var(--cyber-blue);
+        }
+
+        /* Scanner Effect on Hover */
+        .mag-card.active .img-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to bottom, transparent, rgba(0, 243, 255, 0.3), transparent);
+            transition: none;
+            pointer-events: none;
+        }
+
+        .mag-card.active:hover .img-wrapper::after {
+            animation: scan 1.5s linear infinite;
+        }
+
+        .read-btn {
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            color: var(--cyber-blue);
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .read-btn::after {
+            content: '>>';
+            opacity: 0;
+            transition: 0.2s;
+            transform: translateX(-5px);
+        }
+
+        .mag-card.active:hover .read-btn::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @keyframes scan {
+            0% {
+                top: -100%;
+            }
+
+            100% {
+                top: 200%;
+            }
+        }
+
+        /* --- DESIGN 2: LOCKED MAG (COMING SOON) --- */
+        .mag-card.locked {
+            border-color: rgba(255, 42, 42, 0.2);
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .mag-card.locked .img-wrapper img {
+            filter: grayscale(100%) contrast(1.2) brightness(0.4);
+        }
+
+        .lock-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            z-index: 10;
+        }
+
+        .lock-icon {
+            font-size: 3rem;
+            color: var(--locked-red);
+            margin-bottom: 10px;
+            text-shadow: 0 0 15px var(--locked-red);
+        }
+
+        .lock-text {
+            background: var(--locked-red);
+            color: #000;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+        }
+
+        /* Stripe pattern over locked cards */
+        .mag-card.locked::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(0, 0, 0, 0.4) 10px,
+                    rgba(0, 0, 0, 0.4) 20px);
+            z-index: 5;
+            pointer-events: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="header-title">
+                <div class="mono blue-text" style="font-size: 0.8rem; margin-bottom: 10px;">:: DATABASE ACCESS</div>
+                <h1>MAGAZINE ARCHIVE</h1>
+            </div>
+            <div class="mono" style="font-size: 0.8rem; color: #666;">
+                RECORDS FOUND: [4] // DECRYPTING...
+            </div>
+        </header>
+
+        <!-- GRID -->
+        <div class="mag-grid">
+
+            <!-- DESIGN 1: ACTIVE CARD (Copy this block for valid issues) -->
+            <!-- Note: The whole card is an <a> tag in Next.js usually, or wrap content in Link -->
+            <article class="mag-card active">
+                <div class="img-wrapper">
+                    <!-- Placeholder Image -->
+                    <img src="https://placehold.co/600x800/1a1a1a/FFF?text=OMNI+94" alt="Magazine Cover">
+                </div>
+                <div class="content">
+                    <div>
+                        <span class="mono meta-tag">ISSUE #042 // NOV 1994</span>
+                        <h3 class="mag-title">The Phoenix Lights: Preliminary Reports</h3>
+                        <p class="mag-desc">
+                            An early investigation into strange aerial phenomena over Arizona.
+                            Includes reader letters and photo analysis of the V-shape formation.
+                        </p>
+                    </div>
+                    <div class="read-btn">ACCESS FILE</div>
+                </div>
+            </article>
+
+            <!-- ACTIVE CARD EXAMPLE 2 -->
+            <article class="mag-card active">
+                <div class="img-wrapper">
+                    <img src="https://placehold.co/600x800/112/FFF?text=UFO+UNIVERSE" alt="Magazine Cover">
+                </div>
+                <div class="content">
+                    <div>
+                        <span class="mono meta-tag">ISSUE #012 // JUNE 1991</span>
+                        <h3 class="mag-title">Crop Circles: Hoax or Contact?</h3>
+                        <p class="mag-desc">
+                            Special edition focusing on the UK cornfield phenomenon.
+                            Features interviews with Doug and Dave before their confession.
+                        </p>
+                    </div>
+                    <div class="read-btn">ACCESS FILE</div>
+                </div>
+            </article>
+
+            <!-- ACTIVE CARD EXAMPLE 3 -->
+            <article class="mag-card active">
+                <div class="img-wrapper">
+                    <img src="https://placehold.co/600x800/022/FFF?text=SIGHTINGS" alt="Magazine Cover">
+                </div>
+                <div class="content">
+                    <div>
+                        <span class="mono meta-tag">ISSUE #008 // JAN 1997</span>
+                        <h3 class="mag-title">Area 51: The whistleblower</h3>
+                        <p class="mag-desc">
+                            Bob Lazar's story revisited five years later. New schematic drawings
+                            of the sport model craft and element 115 discussion.
+                        </p>
+                    </div>
+                    <div class="read-btn">ACCESS FILE</div>
+                </div>
+            </article>
+
+            <!-- DESIGN 2: LOCKED CARD (Copy this block for coming soon) -->
+            <article class="mag-card locked">
+                <div class="img-wrapper">
+                    <!-- The Lock Overlay -->
+                    <div class="lock-overlay">
+                        <div class="lock-icon">🔒</div>
+                        <div class="mono lock-text">CLASSIFIED</div>
+                    </div>
+                    <img src="https://placehold.co/600x800/220000/555?text=ENCRYPTED" alt="Hidden Cover">
+                </div>
+                <div class="content">
+                    <div>
+                        <span class="mono meta-tag" style="color: #666;">ISSUE #??? // ??? ????</span>
+                        <h3 class="mag-title" style="color: #888;">Data Corrupted</h3>
+                        <p class="mag-desc" style="color: #555;">
+                            This file is currently being digitized. Uplink pending.
+                            Check back for decryption key later.
+                        </p>
+                    </div>
+                    <!-- No Read Button on Locked Cards -->
+                    <div class="mono" style="font-size: 0.7rem; color: var(--locked-red);">ACCESS DENIED</div>
+                </div>
+            </article>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

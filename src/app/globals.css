@@ -643,3 +643,108 @@ body {
     margin-bottom: 0.35rem;
   }
 }
+
+/* ==============================
+   HOMEPAGE STYLES
+   ============================== */
+
+.home-page {
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 5vw 1rem;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.home-container {
+  width: 100%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+.home-title-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.home-title {
+  font-size: 8vw;
+  font-weight: 700;
+  line-height: 0.9;
+  margin: 0;
+  padding: 0;
+}
+
+.home-ascii {
+  font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+  font-size: 10px;
+  line-height: 10px;
+  color: rgba(255, 255, 255, 0.1);
+  pointer-events: none;
+  user-select: none;
+  display: none;
+  white-space: pre;
+  margin: 0;
+}
+
+@media (min-width: 1024px) {
+  .home-ascii {
+    display: block;
+  }
+}
+
+.home-description {
+  font-size: 1.3rem;
+  color: #888;
+  line-height: 1.4;
+  max-width: 1000px;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .home-description {
+    font-size: 1.8rem;
+  }
+}
+
+.home-search {
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .home-page {
+    padding: 3rem 1.5rem 1rem;
+  }
+
+  .home-title {
+    font-size: 12vw;
+  }
+
+  .home-description {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .home-page {
+    padding: 2.5rem 1rem 0.5rem;
+  }
+
+  .home-title {
+    font-size: 14vw;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+}
