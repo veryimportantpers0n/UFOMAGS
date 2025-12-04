@@ -1,0 +1,50 @@
+<svg width="400" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="400" height="600" fill="#0a0a0a"/>
+  
+  <!-- Border -->
+  <rect x="10" y="10" width="380" height="580" fill="none" stroke="#00ff41" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="200" y="100" font-family="monospace" font-size="32" fill="#00ff41" text-anchor="middle" font-weight="bold">
+    UFO MAGAZINE
+  </text>
+  
+  <!-- Date -->
+  <text x="200" y="140" font-family="monospace" font-size="20" fill="#66ff99" text-anchor="middle">
+    Nov/Dec 1997
+  </text>
+  
+  <!-- UFO ASCII Art -->
+  <text x="200" y="250" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    .-"-.
+  </text>
+  <text x="200" y="270" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    /=   =\
+  </text>
+  <text x="200" y="290" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    |=   =|
+  </text>
+  <text x="200" y="310" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    |=   =|
+  </text>
+  <text x="200" y="330" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    \=   =/
+  </text>
+  <text x="200" y="350" font-family="monospace" font-size="14" fill="#00ff41" text-anchor="middle">
+    '-.-'
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="200" y="420" font-family="monospace" font-size="16" fill="#e0e0e0" text-anchor="middle">
+    PLACEHOLDER COVER
+  </text>
+  <text x="200" y="450" font-family="monospace" font-size="12" fill="#a0a0a0" text-anchor="middle">
+    Replace with actual magazine cover
+  </text>
+  
+  <!-- Footer -->
+  <text x="200" y="560" font-family="monospace" font-size="10" fill="#66ff99" text-anchor="middle">
+    OLD UFO MAGS Archive
+  </text>
+</svg>

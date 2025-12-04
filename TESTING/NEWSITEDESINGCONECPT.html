@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PROJECT: ZETA // 2025</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;800&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --cyber-blue: #00f3ff;
+            --void-black: #050505;
+            --deep-space: #0a0a0f;
+            --glass: rgba(255, 255, 255, 0.03);
+            --scanline: rgba(0, 0, 0, 0.5);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none;
+            /* Custom cursor */
+        }
+
+        body {
+            background-color: var(--void-black);
+            color: #e0e0e0;
+            font-family: 'Space Grotesk', sans-serif;
+            overflow-x: hidden;
+            width: 100vw;
+            min-height: 100vh;
+        }
+
+        /* --- CRT & VINTAGE OVERLAYS --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom,
+                    rgba(255, 255, 255, 0),
+                    rgba(255, 255, 255, 0) 50%,
+                    rgba(0, 0, 0, 0.2) 50%,
+                    rgba(0, 0, 0, 0.2));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            pointer-events: none;
+            z-index: 998;
+            background: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
+        }
+
+        /* --- CUSTOM CURSOR --- */
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 1px solid var(--neon-green);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.2s, height 0.2s;
+            mix-blend-mode: difference;
+        }
+
+        .cursor-dot {
+            width: 4px;
+            height: 4px;
+            background: var(--cyber-blue);
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+
+        /* --- CANVAS BG --- */
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
+        /* --- TYPOGRAPHY & UTILS --- */
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.8rem;
+            color: var(--neon-green);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #fff, var(--cyber-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- LAYOUT --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: exclusion;
+        }
+
+        .nav-links span {
+            margin-left: 2rem;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .nav-links span:hover {
+            opacity: 1;
+            color: var(--neon-green);
+            text-shadow: 0 0 10px var(--neon-green);
+        }
+
+        /* --- SECTIONS --- */
+        section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10vw;
+            position: relative;
+        }
+
+        /* HERO */
+        .hero-title {
+            font-size: 8vw;
+            line-height: 0.9;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .ascii-art {
+            position: absolute;
+            right: 5vw;
+            top: 50%;
+            transform: translateY(-50%);
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            line-height: 10px;
+            color: rgba(255, 255, 255, 0.1);
+            pointer-events: none;
+            user-select: none;
+            z-index: -1;
+            white-space: pre;
+        }
+
+        /* CONTENT GRID */
+        .grid-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            backdrop-filter: blur(10px);
+            transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            border-color: var(--neon-green);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 255, 65, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: 0.5s;
+        }
+
+        .card:hover::before {
+            left: 100%;
+        }
+
+        h2 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            color: #888;
+            max-width: 600px;
+        }
+
+        /* --- BUTTON --- */
+        .btn {
+            margin-top: 2rem;
+            display: inline-block;
+            padding: 1rem 2rem;
+            border: 1px solid var(--cyber-blue);
+            color: var(--cyber-blue);
+            text-decoration: none;
+            font-family: 'JetBrains Mono';
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: var(--cyber-blue);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-blue);
+        }
+
+        /* --- LOADING SCREEN --- */
+        #loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 10000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .loader-text {
+            font-family: 'JetBrains Mono';
+            color: var(--neon-green);
+            margin-top: 20px;
+        }
+
+        .bar {
+            width: 200px;
+            height: 2px;
+            background: #222;
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            background: var(--neon-green);
+            width: 0%;
+            animation: load 2s ease-in-out forwards;
+        }
+
+        @keyframes load {
+            0% {
+                width: 0%;
+            }
+
+            100% {
+                width: 100%;
+            }
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .grid-section {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 12vw;
+            }
+
+            .ascii-art {
+                display: none;
+            }
+
+            /* Hide complicated ascii on mobile */
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- OVERLAYS -->
+    <div class="scanlines"></div>
+    <div class="noise"></div>
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+    <canvas id="bg-canvas"></canvas>
+
+    <!-- LOADER -->
+    <div id="loader">
+        <div class="mono">ESTABLISHING UPLINK...</div>
+        <div class="bar">
+            <div class="bar-fill"></div>
+        </div>
+        <div class="loader-text mono">0%</div>
+    </div>
+
+    <!-- UI -->
+    <header>
+        <div class="mono" style="font-weight: 800;">ZETA // PROTOCOL</div>
+        <div class="nav-links mono">
+            <span>[01] SIGHTINGS</span>
+            <span>[02] ARCHIVES</span>
+            <span>[03] CONTACT</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section>
+            <div class="mono" style="margin-bottom: 1rem; color: var(--cyber-blue);">:: INCOMING TRANSMISSION ::</div>
+            <h1 class="hero-title">
+                <span class="scramble" data-value="THEY ARE">THEY ARE</span>
+                <span class="gradient-text scramble" data-value="WATCHING">WATCHING</span>
+                <span class="scramble" data-value="YOU">YOU</span>
+            </h1>
+            <p>
+                The signal has been intercepted. We are not alone in the void.
+                Welcome to the final frontier of truth.
+            </p>
+            <a href="#" class="btn">DECRYPT SIGNAL</a>
+
+            <!-- Modern Gradient ASCII Art -->
+            <pre class="ascii-art" id="ascii-ufo">
+        _.---._
+      .'       '.
+  _.-~===========~-._
+ (___________________)
+       \_______/
+        |     |
+        |     |
+      _/       \_
+     /           \
+            </pre>
+        </section>
+
+        <!-- DATA SECTION -->
+        <section class="grid-section">
+            <div class="card">
+                <div class="mono">FILE: 89-XJ</div>
+                <h3 style="font-size: 2rem; margin: 1rem 0;">ROSWELL RELOADED</h3>
+                <p>New telemetry data suggests the 1947 crash was a deliberate seeding event. Nano-biological evidence
+                    recovered.</p>
+            </div>
+            <div style="padding-left: 2rem;">
+                <div class="mono" style="color: var(--cyber-blue);">:: SYSTEM ANALYSIS</div>
+                <h2>THE TRUTH IS <br><span class="gradient-text">DIGITAL</span></h2>
+                <p>Advanced cloaking technology renders them invisible to the naked eye, but not to our custom kernel
+                    sensors. View the raw data feed.</p>
+                <a href="#" class="btn">ACCESS TERMINAL</a>
+            </div>
+        </section>
+
+        <footer
+            style="padding: 4rem 10vw; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; align-items: end;">
+            <div>
+                <div class="mono">COORDINATES</div>
+                <div style="font-size: 1.5rem; font-family: 'JetBrains Mono'; margin-top: 0.5rem;">51.23N, 30.21W</div>
+            </div>
+            <div class="mono">
+                &copy; 2025 ZETA PROJECT <br> NO ESCAPE
+            </div>
+        </footer>
+    </main>
+
+    <script>
+        // --- CUSTOM CURSOR ---
+        const cursor = document.querySelector('.cursor');
+        const dot = document.querySelector('.cursor-dot');
+
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            dot.style.left = e.clientX + 'px';
+            dot.style.top = e.clientY + 'px';
+        });
+
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = "translate(-50%, -50%) scale(0.8)";
+            cursor.style.backgroundColor = "rgba(0, 255, 65, 0.2)";
+        });
+
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = "translate(-50%, -50%) scale(1)";
+            cursor.style.backgroundColor = "transparent";
+        });
+
+        // --- LOADER ---
+        const loader = document.getElementById('loader');
+        const loaderText = document.querySelector('.loader-text');
+
+        let loadProgress = 0;
+        const loadInterval = setInterval(() => {
+            loadProgress += Math.floor(Math.random() * 5) + 1;
+            if (loadProgress > 100) loadProgress = 100;
+            loaderText.innerText = loadProgress + '%';
+
+            if (loadProgress === 100) {
+                clearInterval(loadInterval);
+                setTimeout(() => {
+                    loader.style.opacity = '0';
+                    loader.style.pointerEvents = 'none';
+                    // Trigger ASCII animation on load
+                    animateAscii();
+                }, 500);
+            }
+        }, 30);
+
+        // --- HACKER TEXT SCRAMBLE EFFECT ---
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*";
+
+        document.querySelectorAll(".scramble").forEach(target => {
+            target.onmouseover = event => {
+                let iteration = 0;
+                clearInterval(event.target.interval);
+
+                event.target.interval = setInterval(() => {
+                    event.target.innerText = event.target.innerText
+                        .split("")
+                        .map((letter, index) => {
+                            if (index < iteration) {
+                                return event.target.dataset.value[index];
+                            }
+                            return letters[Math.floor(Math.random() * 26)];
+                        })
+                        .join("");
+
+                    if (iteration >= event.target.dataset.value.length) {
+                        clearInterval(event.target.interval);
+                    }
+
+                    iteration += 1 / 3;
+                }, 30);
+            }
+        });
+
+        // --- CANVAS BACKGROUND (DATA STARFIELD) ---
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+
+        function resize() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset();
+            }
+
+            reset() {
+                this.x = Math.random() * width;
+                this.y = Math.random() * height;
+                this.z = Math.random() * 2 + 0.5; // Depth
+                this.char = Math.random() > 0.9 ? '1' : '0';
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+
+            update() {
+                this.y -= this.z; // Move up
+                if (this.y < 0) this.reset();
+            }
+
+            draw() {
+                ctx.font = `${10 * this.z}px 'JetBrains Mono'`;
+                ctx.fillStyle = `rgba(0, 243, 255, ${this.opacity})`;
+                ctx.fillText(this.char, this.x, this.y);
+            }
+        }
+
+        const particles = Array.from({ length: 150 }, () => new Particle());
+
+        function animate() {
+            ctx.fillStyle = 'rgba(5, 5, 5, 0.2)'; // Trail effect
+            ctx.fillRect(0, 0, width, height);
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // --- ASCII COLOR CYCLE ---
+        function animateAscii() {
+            const ascii = document.getElementById('ascii-ufo');
+            let hue = 0;
+            setInterval(() => {
+                hue = (hue + 1) % 360;
+                ascii.style.color = `hsl(${hue}, 100%, 50%)`;
+                ascii.style.textShadow = `0 0 10px hsl(${hue}, 100%, 50%)`;
+            }, 50);
+        }
+
+    </script>
+</body>
+
+</html>

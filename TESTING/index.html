@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Hacker Backgrounds - DEBUG MODE</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            overflow: hidden;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        #canvas-container {
+            width: 100vw;
+            height: 100vh;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* The Selector UI */
+        #controls {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.9);
+            border: 1px solid #0f0;
+            padding: 15px;
+            box-shadow: 0 0 10px #0f0;
+            width: 300px;
+        }
+
+        select {
+            background: #000;
+            color: #0f0;
+            border: 1px solid #0f0;
+            padding: 5px;
+            font-family: monospace;
+            font-size: 14px;
+            cursor: pointer;
+            width: 100%;
+            outline: none;
+            margin-bottom: 10px;
+        }
+
+        h3 {
+            color: #0f0;
+            margin: 0 0 10px 0;
+            font-size: 14px;
+            text-transform: uppercase;
+            border-bottom: 1px solid #0f0;
+            padding-bottom: 5px;
+        }
+
+        /* Visual Debug Console */
+        #debug-log {
+            color: #0f0;
+            font-size: 11px;
+            height: 150px;
+            overflow-y: auto;
+            border-top: 1px dashed #004400;
+            padding-top: 5px;
+        }
+
+        .log-entry { margin-bottom: 2px; }
+        .log-error { color: #f00; font-weight: bold; }
+        .log-warn { color: #ff0; }
+    </style>
+</head>
+<body>
+
+    <!-- UI Controls -->
+    <div id="controls">
+        <h3>// SYSTEM CONTROLLER</h3>
+        <select id="bg-select">
+            <option value="" disabled selected>-- SELECT MODULE --</option>
+            <option value="./background2.js">02. The Specimen (UFO)</option>
+            <option value="./background3.js">03. The Invasion (Swarm)</option>
+            <option value="./background4.js">04. The Artifact (Remix)</option>
+            <option value="./background5.js">05. The Grey (Face)</option>
+            <option value="./background6.js">06. The Council (Faces)</option>
+            <option value="./background7.js">07. Abduction Beam</option>
+            <option value="./background8.js">08. Mothership Core</option>
+            <option value="./background9.js">09. Warp Tunnel</option>
+        </select>
+        <div id="debug-log">
+            <div class="log-entry">> SYSTEM INITIALIZED...</div>
+        </div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <script type="module">
+        const container = document.getElementById('canvas-container');
+        const selector = document.getElementById('bg-select');
+        const debugDiv = document.getElementById('debug-log');
+        let currentModule = null;
+
+        function log(msg, type = 'normal') {
+            const entry = document.createElement('div');
+            entry.className = 'log-entry ' + (type === 'error' ? 'log-error' : type === 'warn' ? 'log-warn' : '');
+            entry.textContent = "> " + msg;
+            debugDiv.prepend(entry); // Add to top
+        }
+
+        async function loadBackground(path) {
+            log(`ATTEMPTING LOAD: ${path}`);
+
+            // 1. CLEANUP PREVIOUS
+            if (currentModule) {
+                try {
+                    log("Stopping previous module...");
+                    if (currentModule.stop) {
+                        currentModule.stop();
+                    }
+                    // Forcefully clear container content
+                    container.innerHTML = '';
+                    log("Memory cleared.");
+                } catch (e) {
+                    log("Cleanup Warning: " + e.message, 'warn');
+                }
+            }
+
+            // 2. LOAD NEW
+            try {
+                // Add timestamp to force fresh reload
+                const module = await import(path + "?t=" + Date.now());
+                currentModule = module;
+                
+                log("Module Imported. Initializing 3D Scene...");
+                module.init(container);
+                log("Scene Running.", 'normal');
+            } catch (err) {
+                log("CRITICAL ERROR: " + err.message, 'error');
+                console.error(err);
+            }
+        }
+
+        selector.addEventListener('change', (e) => {
+            loadBackground(e.target.value);
+        });
+
+    </script>
+</body>
+</html>

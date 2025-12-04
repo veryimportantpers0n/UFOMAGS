@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developers.cloudflare.com/pages/platform/build-configuration/",
+  "version": 1,
+  "build": {
+    "command": "npm run build",
+    "cwd": "/",
+    "watchPaths": [
+      "src/**",
+      "public/**",
+      "package.json",
+      "next.config.ts",
+      "tsconfig.json"
+    ]
+  },
+  "deploy": {
+    "outputDirectory": "out"
+  },
+  "preview": {
+    "command": "npm run build",
+    "outputDirectory": "out"
+  }
+}

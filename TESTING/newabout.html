@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OLD UFO MAGS // CLASSIFIED DOSSIER</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;800&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --cyber-blue: #00f3ff;
+            --alert-orange: #ff9e00;
+            --void-black: #050505;
+            --panel-bg: rgba(10, 15, 20, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--void-black);
+            color: #e0e0e0;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- BACKGROUND FX --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.2) 50%, rgba(0, 0, 0, 0.2));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200vw;
+            height: 200vh;
+            background-image:
+                linear-gradient(rgba(0, 255, 65, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 65, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            transform: perspective(500px) rotateX(60deg) translateY(-100px) translateZ(-200px);
+            animation: gridMove 20s linear infinite;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: perspective(500px) rotateX(60deg) translateY(0) translateZ(-200px);
+            }
+
+            100% {
+                transform: perspective(500px) rotateX(60deg) translateY(50px) translateZ(-200px);
+            }
+        }
+
+        /* --- LAYOUT --- */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .neon-text {
+            color: var(--neon-green);
+        }
+
+        .blue-text {
+            color: var(--cyber-blue);
+        }
+
+        h1 {
+            font-size: 3rem;
+            line-height: 1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: -2px;
+        }
+
+        h2 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 1rem;
+            color: var(--cyber-blue);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '>';
+            margin-right: 10px;
+            color: var(--neon-green);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            color: #aaa;
+            font-size: 1.05rem;
+        }
+
+        /* --- CARDS & PANELS --- */
+        .dossier-card {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-color);
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+            transition: 0.3s;
+        }
+
+        /* Tech Corners for Cards */
+        .dossier-card::after {
+            content: '';
+            position: absolute;
+            top: -1px;
+            right: -1px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--neon-green);
+            border-right: 2px solid var(--neon-green);
+        }
+
+        .dossier-card::before {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: -1px;
+            width: 20px;
+            height: 20px;
+            border-bottom: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+        }
+
+        .dossier-card:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 20px rgba(0, 255, 65, 0.05);
+        }
+
+        /* --- LIST STYLING --- */
+        .mission-list {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .mission-list li {
+            padding-left: 1.5rem;
+            position: relative;
+            margin-bottom: 0.8rem;
+            color: #ccc;
+        }
+
+        .mission-list li::before {
+            content: '[+]';
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            top: 2px;
+        }
+
+        /* --- BUTTON --- */
+        .btn-glitch {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: rgba(0, 243, 255, 0.1);
+            border: 1px solid var(--cyber-blue);
+            color: var(--cyber-blue);
+            text-decoration: none;
+            font-family: 'JetBrains Mono';
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-glitch:hover {
+            background: var(--cyber-blue);
+            color: #000;
+            box-shadow: 0 0 30px var(--cyber-blue);
+        }
+
+        /* --- DECORATIVE HEADER --- */
+        .top-tag {
+            display: inline-block;
+            background: var(--neon-green);
+            color: #000;
+            padding: 2px 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* --- ANIMATIONS --- */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .dossier-card {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header class="fade-in-up">
+            <div class="mono top-tag">:: CLASSIFIED DOSSIER</div>
+            <h1 class="scramble-title" data-text="ABOUT OLD UFO MAGS">ABOUT OLD UFO MAGS</h1>
+        </header>
+
+        <!-- MISSION LOG -->
+        <div class="dossier-card fade-in-up delay-1">
+            <h2 class="mono">:: MISSION LOG</h2>
+            <h3>Our Mission</h3>
+            <p>OLD UFO MAGS is a non-profit digital archive project dedicated to preserving and sharing vintage UFO
+                magazines from the 1990s.</p>
+
+            <ul class="mission-list">
+                <li>Preserve rare and out-of-print UFO publications</li>
+                <li>Make historical UFO research accessible to everyone</li>
+                <li>Celebrate the golden age of UFO investigation and reporting</li>
+            </ul>
+
+            <div style="font-size: 0.9rem; border-top: 1px dashed #333; padding-top: 1rem; color: #666;">
+                <span class="mono" style="color: var(--neon-green);">STATUS:</span> All magazines in this archive are
+                hosted on the Internet Archive, ensuring long-term preservation and accessibility.
+            </div>
+        </div>
+
+        <!-- LEGAL PROTOCOL -->
+        <div class="dossier-card fade-in-up delay-2">
+            <h2 class="mono" style="color: var(--alert-orange);">:: LEGAL PROTOCOL</h2>
+            <h3>Copyright & Usage</h3>
+            <p>This is a non-profit educational project. All magazines are from the 1990s and are hosted on the Internet
+                Archive.</p>
+            <p>We respect copyright and intellectual property rights. If you are a copyright holder and have concerns
+                about any content in this archive, please contact us.</p>
+            <p class="mono" style="font-size: 0.8rem; color: #888;">// ALL MATERIALS ARE PROVIDED FOR EDUCATIONAL AND
+                RESEARCH PURPOSES ONLY.</p>
+        </div>
+
+        <!-- UPLINK PARTNER -->
+        <div class="dossier-card fade-in-up delay-3">
+            <h2 class="mono">:: UPLINK PARTNER</h2>
+            <h3>Internet Archive Partnership</h3>
+            <p>All magazine content is hosted on the Internet Archive, a non-profit library of millions of free books,
+                movies, software, music, websites, and more.</p>
+            <p>By partnering with the Internet Archive, we ensure that these historical documents are preserved for
+                future generations and remain freely accessible to researchers, enthusiasts, and curious minds
+                worldwide.</p>
+        </div>
+
+        <!-- COMMS CHANNEL -->
+        <div class="fade-in-up delay-4" style="text-align: center; margin-top: 4rem;">
+            <div class="mono blue-text" style="margin-bottom: 1rem;">:: COMMS CHANNEL</div>
+            <h3 style="margin-bottom: 1rem;">Get in Touch</h3>
+            <p style="margin-bottom: 2rem;">Questions or suggestions? Find us on our social channels or contribute to
+                the project.</p>
+            <a href="links.html" class="btn-glitch">ACCESS SOCIALS</a>
+        </div>
+
+    </div>
+
+    <script>
+        // --- SCRAMBLE TEXT EFFECT FOR TITLE ---
+        const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        const title = document.querySelector('.scramble-title');
+
+        // Wait a moment then scramble
+        setTimeout(() => {
+            let iteration = 0;
+            const originalText = title.dataset.text;
+            let interval = setInterval(() => {
+                title.innerText = originalText
+                    .split("")
+                    .map((letter, index) => {
+                        if (index < iteration) {
+                            return originalText[index];
+                        }
+                        if (letter === " ") return " ";
+                        return letters[Math.floor(Math.random() * 36)];
+                    })
+                    .join("");
+
+                if (iteration >= originalText.length) {
+                    clearInterval(interval);
+                }
+
+                iteration += 1 / 3;
+            }, 30);
+        }, 500);
+    </script>
+</body>
+
+</html>

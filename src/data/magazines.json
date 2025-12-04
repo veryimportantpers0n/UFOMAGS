@@ -1,0 +1,14 @@
+{
+  "magazines": [
+    {
+      "id": "nov-dec-1997",
+      "slug": "nov-dec-1997",
+      "coverName": "UFO Magazine",
+      "date": "Nov/Dec 1997",
+      "description": "A fascinating look into UFO sightings and encounters from the late 1990s. Features in-depth investigations, eyewitness accounts, and analysis of unexplained phenomena.",
+      "customText": "This issue includes exclusive interviews with researchers and a special report on the Phoenix Lights incident.",
+      "coverImage": "/covers/nov-dec-1997.jpg",
+      "archiveUrl": "https://archive.org/details/36-37_20251202"
+    }
+  ]
+}
