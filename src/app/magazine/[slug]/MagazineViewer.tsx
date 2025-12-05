@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Background from '@/components/Background';
 import { generateCreativeWorkSchema } from '@/lib/seo';
@@ -12,33 +11,12 @@ interface MagazineViewerProps {
 }
 
 export default function MagazineViewer({ magazine }: MagazineViewerProps) {
-    const [blockInteraction, setBlockInteraction] = useState(false);
-    const containerRef = useRef<HTMLDivElement>(null);
-
     // Extract archive ID from URL for embed
     const archiveId = magazine.archiveUrl.split('/').pop() || '';
-    // Try Internet Archive parameters to force theater/full-screen mode
-    const embedUrl = `https://archive.org/embed/${archiveId}?ui=embed&skin=2023&view=theater`;
+    const embedUrl = `https://archive.org/embed/${archiveId}`;
 
     // Generate JSON-LD structured data
     const structuredData = generateCreativeWorkSchema(magazine);
-
-    // Prevent double-click zoom in iframe
-    useEffect(() => {
-        const handleDoubleClick = (e: MouseEvent) => {
-            e.preventDefault();
-            e.stopPropagation();
-            // Temporarily block interactions to prevent zoom
-            setBlockInteraction(true);
-            setTimeout(() => setBlockInteraction(false), 200);
-        };
-
-        const container = containerRef.current;
-        if (container) {
-            container.addEventListener('dblclick', handleDoubleClick, { capture: true });
-            return () => container.removeEventListener('dblclick', handleDoubleClick, { capture: true });
-        }
-    }, []);
 
     return (
         <Background>
@@ -55,45 +33,42 @@ export default function MagazineViewer({ magazine }: MagazineViewerProps) {
                     {/* Internet Archive Viewer */}
                     <section className="viewer-frame">
                         <div className="viewer-header mono">
-                            <span className="green-text">:: INTERNET ARCHIVE UPLINK ESTABLISHED</span>
-                            <span>MODE: READ-ONLY</span>
+                            <span className="green-text">:: INTERNET ARCHIVE UPLINK</span>
+                            <span>EMBED VIEWER</span>
                         </div>
-                        <div className="iframe-container" ref={containerRef}>
+
+                        {/* Iframe container with blocker to prevent zoom issues */}
+                        <div className="iframe-container">
                             <iframe
                                 src={embedUrl}
                                 frameBorder="0"
                                 allowFullScreen
                                 title={`${magazine.coverName} - ${magazine.date}`}
+                                className="viewer-iframe"
                             />
-                            {/* Overlay to prevent double-click zoom */}
-                            <div
-                                className="iframe-overlay"
-                                style={{ pointerEvents: blockInteraction ? 'all' : 'none' }}
-                            />
+                            {/* Overlay to block double-click zoom - allows single clicks through */}
+                            <div className="iframe-blocker" />
                         </div>
-                        {/* Navigation Controls */}
-                        <div className="viewer-controls">
-                            <div className="navigation-instructions mono">
-                                <div className="instruction-row">
-                                    <svg className="instruction-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122" />
-                                    </svg>
-                                    <span className="green-text">CLICK INSIDE VIEWER FIRST</span>
-                                    <span className="dim-text">→ Then use arrow keys ← → to navigate pages</span>
-                                </div>
-                            </div>
 
-                            <a
-                                href={magazine.archiveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="control-btn primary mono"
-                            >
-                                <svg className="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        {/* Important: Direct user to Full Viewer for best experience */}
+                        <div className="viewer-notice">
+                            <div className="notice-content mono">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" width="24" height="24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
-                                OPEN FULL VIEWER
-                            </a>
+                                <span>
+                                    <strong className="green-text">TIP:</strong> For the best reading experience with full page controls,
+                                    open the magazine in Internet Archive's full viewer.
+                                </span>
+                                <a
+                                    href={magazine.archiveUrl}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="open-full-btn"
+                                >
+                                    OPEN FULL VIEWER →
+                                </a>
+                            </div>
                         </div>
                     </section>
                 </div>
