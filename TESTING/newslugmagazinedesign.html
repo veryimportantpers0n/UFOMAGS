@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VIEWING: ISSUE #042</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;800&family=Space+Grotesk:wght@300;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --neon-green: #00ff41;
+            --cyber-blue: #00f3ff;
+            --alert-orange: #ff9e00;
+            --void-black: #050505;
+            --panel-bg: rgba(20, 20, 25, 0.7);
+            --border-dim: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--void-black);
+            color: #e0e0e0;
+            font-family: 'Space Grotesk', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-bottom: 4rem;
+        }
+
+        /* --- BACKGROUND FX --- */
+        .scanlines {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.1) 50%, rgba(0, 0, 0, 0.1));
+            background-size: 100% 4px;
+            pointer-events: none;
+            z-index: 999;
+        }
+
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200vw;
+            height: 200vh;
+            background-image:
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            transform: perspective(1000px) rotateX(60deg) translateY(-100px) translateZ(-300px);
+            z-index: -1;
+        }
+
+        /* --- UTILS --- */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 5vw;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .green-text {
+            color: var(--neon-green);
+        }
+
+        .blue-text {
+            color: var(--cyber-blue);
+        }
+
+        /* --- NAVIGATION --- */
+        .nav-bar {
+            padding: 2rem 0;
+            display: flex;
+            align-items: center;
+        }
+
+        .back-btn {
+            color: #888;
+            text-decoration: none;
+            font-family: 'JetBrains Mono';
+            font-size: 0.9rem;
+            transition: 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn:hover {
+            color: var(--neon-green);
+            transform: translateX(-5px);
+        }
+
+        /* --- VIEWER SECTION (TOP) --- */
+        .viewer-frame {
+            border: 1px solid var(--border-dim);
+            background: #000;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .viewer-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem 1rem;
+            border-bottom: 1px solid var(--border-dim);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        .iframe-container {
+            width: 100%;
+            height: 70vh;
+            /* Tall viewer */
+            position: relative;
+        }
+
+        .iframe-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* --- SPLIT GRID (BOTTOM) --- */
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            /* Left side (details) is slightly wider */
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* LEFT: MAGAZINE DETAILS */
+        .details-panel {
+            background: var(--panel-bg);
+            border: 1px solid var(--border-dim);
+            padding: 2rem;
+            backdrop-filter: blur(10px);
+            position: relative;
+        }
+
+        /* Decorative Corners */
+        .details-panel::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: -1px;
+            width: 20px;
+            height: 20px;
+            border-top: 2px solid var(--neon-green);
+            border-left: 2px solid var(--neon-green);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 1;
+            margin: 1rem 0;
+            text-transform: uppercase;
+        }
+
+        .meta-row {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+            padding-bottom: 1rem;
+        }
+
+        .meta-item span {
+            display: block;
+        }
+
+        .label {
+            font-size: 0.7rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .value {
+            font-size: 1rem;
+            color: var(--cyber-blue);
+            font-weight: bold;
+        }
+
+        .blurb-box {
+            margin-bottom: 2rem;
+        }
+
+        .blurb-title {
+            color: var(--neon-green);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .blurb-text {
+            color: #ccc;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        /* RIGHT: VIDEO DEBRIEF */
+        .video-panel {
+            border: 1px solid var(--border-dim);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1.5rem;
+            position: relative;
+        }
+
+        /* Video Panel "Rec" styling */
+        .video-panel::after {
+            content: 'REC •';
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            background: var(--void-black);
+            color: red;
+            font-family: 'JetBrains Mono';
+            font-size: 0.8rem;
+            padding: 0 10px;
+            animation: blink 2s infinite;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        .video-wrapper {
+            width: 100%;
+            aspect-ratio: 16 / 9;
+            background: #000;
+            margin-bottom: 1.5rem;
+            border: 1px solid #333;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .video-actions {
+            text-align: center;
+        }
+
+        .yt-btn {
+            display: inline-block;
+            margin-top: 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid var(--alert-orange);
+            padding-bottom: 2px;
+            transition: 0.3s;
+        }
+
+        .yt-btn:hover {
+            color: var(--alert-orange);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .iframe-container {
+                height: 50vh;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+    <div class="grid-bg"></div>
+
+    <div class="container">
+
+        <!-- NAV -->
+        <nav class="nav-bar">
+            <a href="archive.html" class="back-btn mono">
+                &lt; RETURN TO ARCHIVE
+            </a>
+        </nav>
+
+        <!-- TOP: VIEWER -->
+        <section class="viewer-frame">
+            <div class="viewer-header mono">
+                <span class="green-text">:: INTERNET ARCHIVE UPLINK ESTABLISHED</span>
+                <span>MODE: READ-ONLY</span>
+            </div>
+            <div class="iframe-container">
+                <!-- INTERNET ARCHIVE EMBED GOES HERE -->
+                <!-- Example Embed Source -->
+                <iframe src="https://archive.org/embed/omni-magazine-1994-01" frameborder="0"
+                    webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen></iframe>
+            </div>
+        </section>
+
+        <!-- BOTTOM: DETAILS & VIDEO GRID -->
+        <section class="info-grid">
+
+            <!-- LEFT COL: DETAILS -->
+            <article class="details-panel">
+                <div class="mono label green-text">// CLASSIFIED FILE #892</div>
+                <h1>OMNI MAGAZINE: WINTER EDITION</h1>
+
+                <div class="meta-row mono">
+                    <div class="meta-item">
+                        <span class="label">DATE OF ORIGIN</span>
+                        <span class="value">JAN 1994</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">PUBLISHER</span>
+                        <span class="value">OMNI PUB INT.</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="label">PAGES</span>
+                        <span class="value">124</span>
+                    </div>
+                </div>
+
+                <div class="blurb-box">
+                    <h3 class="mono blurb-title">>> COVER ANALYSIS</h3>
+                    <p class="blurb-text">
+                        The cover depicts a surrealist interpretation of "The Face on Mars," a popular topic during the
+                        early 90s following the Viking orbiter images. The artwork suggests a biomechanical origin,
+                        hinting at the magazine's focus on the intersection of biology and extraterrestrial technology.
+                    </p>
+                </div>
+
+                <div class="blurb-box">
+                    <h3 class="mono blurb-title">>> ISSUE CONTENTS</h3>
+                    <p class="blurb-text">
+                        This issue contains the seminal article "Whispers from the Void," which detailed the first
+                        public release of SETI signal data. It also features a rare interview with Whitley Strieber
+                        regarding the reception of "Communion" five years later.
+                    </p>
+                </div>
+            </article>
+
+            <!-- RIGHT COL: VIDEO -->
+            <aside class="video-panel">
+                <div class="mono blue-text" style="margin-bottom: 1rem; font-size: 0.9rem;">
+                    :: VIDEO DEBRIEF
+                </div>
+
+                <div class="video-wrapper">
+                    <!-- YOUTUBE EMBED GOES HERE -->
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=control"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                </div>
+
+                <div class="video-actions">
+                    <h3 class="mono" style="font-size: 1.1rem; margin-bottom: 0.5rem;">DEEP DIVE: ISSUE #042</h3>
+                    <p style="font-size: 0.9rem; color: #888; margin-bottom: 1rem;">
+                        Join us as we flip through the physical copy and discuss the cultural impact of this specific
+                        cover story.
+                    </p>
+                    <a href="#" class="yt-btn mono">
+                        WATCH ON YOUTUBE_ [EXT] ↗
+                    </a>
+                </div>
+            </aside>
+
+        </section>
+
+    </div>
+
+</body>
+
+</html>

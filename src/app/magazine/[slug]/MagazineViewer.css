@@ -1,0 +1,393 @@
+/* ==============================
+   MAGAZINE VIEWER STYLES
+   Separate CSS for magazine slug page viewer
+   ============================== */
+
+/* --- PAGE LAYOUT --- */
+.magazine-slug-page {
+    min-height: 100vh;
+    padding-bottom: 4rem;
+}
+
+.slug-container {
+    width: 100%;
+}
+
+.slug-content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+/* --- NAVIGATION --- */
+.slug-nav {
+    padding: 2rem 5vw;
+    display: flex;
+    align-items: center;
+}
+
+.back-btn {
+    color: #888;
+    text-decoration: none;
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-size: 0.9rem;
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.back-btn:hover {
+    color: var(--neon-green);
+    transform: translateX(-5px);
+}
+
+/* --- VIEWER SECTION --- */
+.viewer-frame {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.viewer-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+.green-text {
+    color: var(--neon-green);
+}
+
+/* --- IFRAME CONTAINER --- */
+.iframe-container {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+}
+
+.iframe-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Overlay - can be used to block interactions if needed */
+.iframe-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: transparent;
+    cursor: default;
+    pointer-events: none;
+}
+
+/* --- INFO GRID --- */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 3rem;
+    align-items: start;
+}
+
+/* --- DETAILS PANEL --- */
+.details-panel {
+    background: rgba(20, 20, 25, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.details-panel::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--neon-green);
+    border-left: 2px solid var(--neon-green);
+}
+
+.details-panel h1 {
+    font-size: 2.5rem;
+    line-height: 1;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.meta-item span {
+    display: block;
+}
+
+.label {
+    font-size: 0.7rem;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+.value {
+    font-size: 1rem;
+    color: var(--cyber-blue);
+    font-weight: bold;
+}
+
+.blurb-box {
+    margin-bottom: 2rem;
+}
+
+.blurb-box:last-child {
+    margin-bottom: 0;
+}
+
+.blurb-title {
+    color: var(--neon-green);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.blurb-text {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* --- VIDEO PANEL --- */
+.video-panel {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+    padding: 1.5rem;
+    position: relative;
+}
+
+.video-panel::after {
+    content: 'REC •';
+    position: absolute;
+    top: -10px;
+    right: 20px;
+    background: var(--void-black);
+    color: red;
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-size: 0.8rem;
+    padding: 0 10px;
+    animation: blink 2s infinite;
+}
+
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
+}
+
+.video-header {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+}
+
+.video-wrapper {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    margin-bottom: 1.5rem;
+    border: 1px solid #333;
+}
+
+.video-wrapper iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.video-actions {
+    text-align: center;
+}
+
+.video-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.video-description {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.yt-btn {
+    display: inline-block;
+    margin-top: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--alert-orange);
+    padding-bottom: 2px;
+    transition: 0.3s;
+}
+
+.yt-btn:hover {
+    color: var(--alert-orange);
+}
+
+/* --- VIEWER CONTROLS --- */
+.viewer-controls {
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.control-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 1px solid var(--cyber-blue);
+    color: var(--cyber-blue);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+.control-btn:hover {
+    background: var(--cyber-blue);
+    color: #000;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.3);
+}
+
+.control-btn .icon {
+    width: 16px;
+    height: 16px;
+}
+
+.control-btn.primary {
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+
+.control-hint {
+    font-size: 0.75rem;
+    color: #666;
+    font-style: italic;
+}
+
+/* --- NAVIGATION INSTRUCTIONS --- */
+.navigation-instructions {
+    flex: 1;
+    padding: 0.5rem 0;
+}
+
+.instruction-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.instruction-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--neon-green);
+    flex-shrink: 0;
+}
+
+.dim-text {
+    color: #888;
+}
+
+/* --- HIDE SCANLINES ON MAGAZINE PAGES --- */
+.magazine-slug-page~.fixed.z-\[999\] {
+    display: none;
+}
+
+body:has([data-page="magazine-slug"]) .fixed.z-\[999\] {
+    display: none !important;
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+
+@media (max-width: 900px) {
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .iframe-container {
+        height: 50vh;
+    }
+
+    .details-panel h1 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .instruction-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.5rem;
+    }
+
+    .instruction-row span {
+        display: block;
+    }
+}
+
+@media (max-width: 600px) {
+    .slug-container {
+        padding: 0 1rem;
+    }
+
+    .details-panel {
+        padding: 1.5rem;
+    }
+
+    .details-panel h1 {
+        font-size: 1.5rem;
+    }
+
+    .meta-row {
+        gap: 1rem;
+    }
+
+    .iframe-container {
+        height: 40vh;
+    }
+
+    .viewer-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .control-btn {
+        justify-content: center;
+    }
+
+    .control-hint {
+        text-align: center;
+    }
+}

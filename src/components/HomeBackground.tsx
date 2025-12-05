@@ -11,6 +11,7 @@ const BACKGROUNDS = [
   'abduction-beam',
   'bio-rings',
   'portal-tunnel',
+  'digital-rain',
 ];
 
 export default function HomeBackground() {
@@ -33,9 +34,14 @@ export default function HomeBackground() {
 
         // Select random background
         const randomBg = BACKGROUNDS[Math.floor(Math.random() * BACKGROUNDS.length)];
-        
+
         // Dynamically import the background module
         let backgroundModule;
+
+        // FORCE DIGITAL RAIN (User Request)
+        backgroundModule = await import('@/backgrounds/digital-rain');
+
+        /*
         switch (randomBg) {
           case 'ufo-fleet':
             backgroundModule = await import('@/backgrounds/ufo-fleet');
@@ -61,16 +67,20 @@ export default function HomeBackground() {
           case 'portal-tunnel':
             backgroundModule = await import('@/backgrounds/portal-tunnel');
             break;
+          case 'digital-rain':
+            backgroundModule = await import('@/backgrounds/digital-rain');
+            break;
           default:
             backgroundModule = await import('@/backgrounds/ufo-fleet');
         }
+        */
 
         if (!mounted) return;
 
         // Initialize the background
         backgroundModule.init(containerRef.current, THREE, AsciiEffect);
         backgroundRef.current = backgroundModule;
-        
+
         setIsLoading(false);
       } catch (error) {
         console.error('Failed to load background:', error);
@@ -94,7 +104,7 @@ export default function HomeBackground() {
       {isLoading && (
         <div className="fixed inset-0 bg-gradient-to-b from-black via-gray-900 to-black -z-10" />
       )}
-      
+
       {/* Three.js background container */}
       <div
         ref={containerRef}

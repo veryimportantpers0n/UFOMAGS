@@ -7,17 +7,49 @@ import { Magazine } from '@/types/magazine';
 interface MagazineCardProps {
   magazine: Magazine;
   onClick: () => void;
+  isLocked?: boolean;
 }
 
-/**
- * MagazineCard component displays a magazine preview in grid layouts
- * Requirements: 6.2, 6.4, 6.5, 12.3, 14.3, 14.4, 14.5
- */
-export default function MagazineCard({ magazine, onClick }: MagazineCardProps) {
+export default function MagazineCard({ magazine, onClick, isLocked = false }: MagazineCardProps) {
   const [imageError, setImageError] = useState(false);
 
+  if (isLocked) {
+    return (
+      <article className="mag-card locked">
+        <div className="img-wrapper">
+          {/* Lock Overlay */}
+          <div className="lock-overlay">
+            <div className="lock-icon">🔒</div>
+            <div className="mono lock-text">CLASSIFIED</div>
+          </div>
+          <img
+            src="https://placehold.co/600x800/220000/555?text=ENCRYPTED"
+            alt="Classified Magazine"
+          />
+        </div>
+        <div className="content">
+          <div>
+            <span className="mono meta-tag" style={{ color: '#666' }}>
+              ISSUE #{magazine.issue_number} // {magazine.publication_date}
+            </span>
+            <h3 className="mag-title" style={{ color: '#888' }}>
+              {magazine.title}
+            </h3>
+            <p className="mag-desc" style={{ color: '#555' }}>
+              {magazine.description}
+            </p>
+          </div>
+          <div className="mono" style={{ fontSize: '0.7rem', color: 'var(--locked-red)' }}>
+            ACCESS DENIED
+          </div>
+        </div>
+      </article>
+    );
+  }
+
   return (
-    <div
+    <article
+      className="mag-card active"
       onClick={onClick}
       onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === ' ') {
@@ -27,46 +59,36 @@ export default function MagazineCard({ magazine, onClick }: MagazineCardProps) {
       }}
       role="button"
       tabIndex={0}
-      aria-label={`View ${magazine.coverName}, ${magazine.date} issue`}
-      className="group cursor-pointer transition-all duration-300 hover:scale-105 
-                 focus:outline-none focus:ring-2 focus:ring-[#00ff41] focus:ring-offset-2 
-                 focus:ring-offset-black rounded-lg animate-fade-in"
+      aria-label={`View ${magazine.title}, ${magazine.publication_date}`}
     >
-      <div className="relative overflow-hidden rounded-lg border-2 border-gray-800 
-                      hover:border-[#00ff41] group-focus:border-[#00ff41] 
-                      transition-all duration-300 hover:shadow-lg hover:shadow-[#00ff41]/20">
-        {/* Cover Image with lazy loading and fallback */}
-        <div className="relative aspect-[3/4] bg-gray-900">
+      <div className="img-wrapper">
+        {imageError ? (
+          <img
+            src="https://placehold.co/600x800/1a1a1a/FFF?text=NO+IMAGE"
+            alt={`Cover of ${magazine.title}`}
+          />
+        ) : (
           <Image
-            src={imageError ? '/placeholder-cover.svg' : magazine.coverImage}
-            alt={`Cover of ${magazine.coverName}, ${magazine.date} issue`}
+            src={magazine.cover_image || '/placeholder-cover.svg'}
+            alt={`Cover of ${magazine.title}, ${magazine.publication_date}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            className="mag-img"
             loading="lazy"
             onError={() => setImageError(true)}
           />
-        </div>
-
-        {/* Metadata Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/70 to-transparent 
-                        opacity-0 group-hover:opacity-100 transition-opacity duration-300 
-                        flex flex-col justify-end p-4">
-          <h3 className="text-[#00ff41] font-bold text-base md:text-lg mb-1 glow-green">
-            {magazine.coverName}
-          </h3>
-          <p className="text-gray-300 text-sm">{magazine.date}</p>
-        </div>
+        )}
       </div>
-
-      {/* Metadata Below Card */}
-      <div className="mt-3 px-1">
-        <h3 className="text-gray-200 font-semibold text-sm md:text-base mb-1 
-                       group-hover:text-[#00ff41] transition-colors duration-200">
-          {magazine.coverName}
-        </h3>
-        <p className="text-gray-400 text-xs md:text-sm">{magazine.date}</p>
+      <div className="content">
+        <div>
+          <span className="mono meta-tag">
+            ISSUE #{magazine.issue_number} // {magazine.publication_date}
+          </span>
+          <h3 className="mag-title">{magazine.title}</h3>
+          <p className="mag-desc">{magazine.description}</p>
+        </div>
+        <div className="read-btn">ACCESS FILE</div>
       </div>
-    </div>
+    </article>
   );
 }

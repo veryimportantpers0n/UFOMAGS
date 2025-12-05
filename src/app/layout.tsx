@@ -4,7 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { generateSEOMetadata } from "@/lib/seo";
 import { Scanlines, Noise } from "@/components/ui/Overlays";
-import CanvasBackground from "@/components/ui/CanvasBackground";
+import HomeBackground from "@/components/HomeBackground";
 import Loader from "@/components/ui/Loader";
 
 const jetbrainsMono = JetBrains_Mono({
@@ -40,7 +40,7 @@ export default function RootLayout({
         <Scanlines />
         <Noise />
 
-        <CanvasBackground />
+        <HomeBackground />
         <Navbar />
         {children}
       </body>

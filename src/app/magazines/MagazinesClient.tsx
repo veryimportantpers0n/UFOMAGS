@@ -5,7 +5,6 @@ import Background from '@/components/Background';
 import MagazineCard from '@/components/MagazineCard';
 import magazineData from '@/data/magazines.json';
 import type { Magazine } from '@/types/magazine';
-import TextScramble from '@/components/ui/TextScramble';
 
 export default function MagazinesClient() {
   const router = useRouter();
@@ -17,45 +16,76 @@ export default function MagazinesClient() {
 
   return (
     <Background>
-      <main className="page-container">
-        <div className="container mx-auto max-w-7xl">
-          {/* Page Header */}
-          <div className="mb-12">
-            <div className="mono mb-4">:: CLASSIFIED ARCHIVES</div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-4">
-              <TextScramble text="MAGAZINE" className="block" />
-              <TextScramble text="ARCHIVE" className="block gradient-text" />
-            </h1>
-            <p className="text-lg text-[#888] max-w-2xl">
-              Browse our complete collection of vintage UFO magazines. Click any
-              cover to start reading.
-            </p>
-          </div>
-
-          <div className="mono mb-6">:: {magazines.length} FILES RECOVERED</div>
+      <div className="magazines-page">
+        <div className="magazines-container">
+          {/* Header */}
+          <header className="magazines-header">
+            <div className="header-title">
+              <div className="mono magazine-subtitle">:: DATABASE ACCESS</div>
+              <h1 className="magazine-page-title">MAGAZINE ARCHIVE</h1>
+            </div>
+            <div className="mono magazine-count">
+              RECORDS FOUND: [{magazines.length}] // DECRYPTING...
+            </div>
+          </header>
 
           {/* Magazine Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
+          <div className="mag-grid">
             {magazines.map((magazine) => (
               <MagazineCard
                 key={magazine.id}
                 magazine={magazine}
                 onClick={() => handleMagazineClick(magazine.slug)}
+                isLocked={false}
               />
             ))}
-          </div>
 
-          {/* Empty State */}
-          {magazines.length === 0 && (
-            <div className="glass-card p-12 text-center">
-              <div className="mono mb-4">:: NO SIGNAL</div>
-              <p className="text-[#888] text-lg">
-                No magazines available yet. Check back soon!
-              </p>
-            </div>
-          )}
+            {/* Coming Soon Locked Cards - Add 3 placeholders */}
+            <MagazineCard
+              magazine={{
+                id: 'locked-1',
+                title: 'Data Corrupted',
+                slug: '',
+                issue_number: '???',
+                publication_date: '??? ????',
+                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
+                cover_image: '',
+                archive_url: '',
+              } as Magazine}
+              onClick={() => { }}
+              isLocked={true}
+            />
+            <MagazineCard
+              magazine={{
+                id: 'locked-2',
+                title: 'Data Corrupted',
+                slug: '',
+                issue_number: '???',
+                publication_date: '??? ????',
+                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
+                cover_image: '',
+                archive_url: '',
+              } as Magazine}
+              onClick={() => { }}
+              isLocked={true}
+            />
+            <MagazineCard
+              magazine={{
+                id: 'locked-3',
+                title: 'Data Corrupted',
+                slug: '',
+                issue_number: '???',
+                publication_date: '??? ????',
+                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
+                cover_image: '',
+                archive_url: '',
+              } as Magazine}
+              onClick={() => { }}
+              isLocked={true}
+            />
+          </div>
         </div>
-      </main>
+      </div>
     </Background>
   );
 }
