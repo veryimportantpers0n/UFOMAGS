@@ -21,19 +21,16 @@ export default function MagazineViewer({ magazine }: MagazineViewerProps) {
     return (
         <Background>
             <div className="magazine-slug-page" data-page="magazine-slug">
-                {/* Navigation - with padding */}
-                <nav className="slug-nav">
-                    <Link href="/magazines" className="back-btn mono">
-                        &lt; RETURN TO ARCHIVE
-                    </Link>
-                </nav>
+                {/* Navigation removed and integrated into viewer header */}
 
                 {/* Full-width Viewer Container */}
                 <div className="slug-container">
                     {/* Internet Archive Viewer */}
                     <section className="viewer-frame">
                         <div className="viewer-header mono">
-                            <span className="green-text">:: INTERNET ARCHIVE UPLINK</span>
+                            <Link href="/magazines" className="green-text hover:text-cyan-400 no-underline transition-colors duration-200">
+                                &lt; RETURN TO ARCHIVE
+                            </Link>
                             <span>EMBED VIEWER</span>
                         </div>
 
