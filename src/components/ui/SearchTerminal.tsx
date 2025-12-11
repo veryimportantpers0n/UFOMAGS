@@ -47,11 +47,11 @@ export default function SearchTerminal({ magazines }: SearchTerminalProps) {
         <div className="relative w-full max-w-4xl mx-auto md:mx-0">
             <div
                 className={`relative flex items-center bg-black/80 border transition-all duration-300 ${isFocused
-                    ? "border-[var(--neon-green)] shadow-[0_0_20px_rgba(0,255,65,0.2)]"
+                    ? "border-[var(--cyber-blue-dark)] shadow-[0_0_20px_rgba(0,173,181,0.2)]"
                     : "border-[var(--cyber-blue)]"
                     }`}
             >
-                <span className="search-prompt-large pl-6 pr-4 mono text-[var(--neon-green)] select-none">
+                <span className="search-prompt-large pl-6 pr-4 mono text-[var(--cyber-blue-dark)] select-none">
                     {">"}
                 </span>
                 <input
@@ -67,23 +67,23 @@ export default function SearchTerminal({ magazines }: SearchTerminalProps) {
                     autoComplete="off"
                     spellCheck="false"
                 />
-                <div className="absolute right-0 top-0 h-full w-2 bg-[var(--neon-green)] animate-pulse opacity-50 pointer-events-none" />
+                <div className="absolute right-0 top-0 h-full w-2 bg-[var(--cyber-blue-dark)] animate-pulse opacity-50 pointer-events-none" />
             </div>
 
             {/* Holographic Results Dropdown */}
             {results.length > 0 && (
-                <div className="absolute top-full left-0 w-full mt-2 bg-black/90 border border-[var(--neon-green)] backdrop-blur-md z-50 max-h-[300px] overflow-y-auto custom-scrollbar">
-                    <div className="mono text-[10px] bg-[var(--neon-green)]/10 text-[var(--neon-green)] px-2 py-1 border-b border-[var(--neon-green)]/30">
+                <div className="absolute top-full left-0 w-full mt-2 bg-black/90 border border-[var(--cyber-blue-dark)] backdrop-blur-md z-50 max-h-[300px] overflow-y-auto custom-scrollbar">
+                    <div className="mono text-[10px] bg-[var(--cyber-blue-dark)]/10 text-[var(--cyber-blue-dark)] px-2 py-1 border-b border-[var(--cyber-blue-dark)]/30">
                         {results.length} MATCHES FOUND
                     </div>
                     {results.map((mag) => (
                         <Link
                             key={mag.id}
                             href={`/magazine/${mag.slug}`}
-                            className="block p-3 border-b border-[var(--neon-green)]/10 hover:bg-[var(--neon-green)]/20 transition-colors group"
+                            className="block p-3 border-b border-[var(--cyber-blue-dark)]/10 hover:bg-[var(--cyber-blue-dark)]/20 transition-colors group"
                         >
                             <div className="flex justify-between items-baseline mb-1">
-                                <span className="mono text-[var(--neon-green)] text-sm font-bold group-hover:text-white transition-colors">
+                                <span className="mono text-[var(--cyber-blue-dark)] text-sm font-bold group-hover:text-white transition-colors">
                                     {mag.coverName}
                                 </span>
                                 <span className="mono text-[var(--cyber-blue)] text-xs">

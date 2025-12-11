@@ -30,10 +30,10 @@ export default function MagazineCard({ magazine, onClick, isLocked = false }: Ma
         <div className="content">
           <div>
             <span className="mono meta-tag" style={{ color: '#666' }}>
-              ISSUE #{magazine.issue_number} // {magazine.publication_date}
+              ISSUE #{magazine.issueNumber} // {magazine.date}
             </span>
             <h3 className="mag-title" style={{ color: '#888' }}>
-              {magazine.title}
+              {magazine.coverName}
             </h3>
             <p className="mag-desc" style={{ color: '#555' }}>
               {magazine.description}
@@ -59,18 +59,18 @@ export default function MagazineCard({ magazine, onClick, isLocked = false }: Ma
       }}
       role="button"
       tabIndex={0}
-      aria-label={`View ${magazine.title}, ${magazine.publication_date}`}
+      aria-label={`View ${magazine.coverName}, ${magazine.date}`}
     >
       <div className="img-wrapper">
         {imageError ? (
           <img
             src="https://placehold.co/600x800/1a1a1a/FFF?text=NO+IMAGE"
-            alt={`Cover of ${magazine.title}`}
+            alt={`Cover of ${magazine.coverName}`}
           />
         ) : (
           <Image
-            src={magazine.cover_image || '/placeholder-cover.svg'}
-            alt={`Cover of ${magazine.title}, ${magazine.publication_date}`}
+            src={magazine.coverImage || '/placeholder-cover.svg'}
+            alt={`Cover of ${magazine.coverName}, ${magazine.date}`}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             className="mag-img"
@@ -82,9 +82,9 @@ export default function MagazineCard({ magazine, onClick, isLocked = false }: Ma
       <div className="content">
         <div>
           <span className="mono meta-tag">
-            ISSUE #{magazine.issue_number} // {magazine.publication_date}
+            ISSUE #{magazine.issueNumber} // {magazine.date}
           </span>
-          <h3 className="mag-title">{magazine.title}</h3>
+          <h3 className="mag-title">{magazine.coverName}</h3>
           <p className="mag-desc">{magazine.description}</p>
         </div>
         <div className="read-btn">ACCESS FILE</div>

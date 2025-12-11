@@ -38,7 +38,7 @@
 }
 
 .back-btn:hover {
-    color: var(--neon-green);
+    color: var(--cyber-blue-dark);
     transform: translateX(-5px);
 }
 
@@ -61,7 +61,7 @@
 }
 
 .green-text {
-    color: var(--neon-green);
+    color: var(--cyber-blue-dark);
 }
 
 /* --- IFRAME CONTAINER --- */
@@ -81,12 +81,12 @@
 
 /* Blocker overlay - prevents double-click zoom issues
    Still allows the IA viewer's internal navigation arrows to work
-   via the sides being clickable */
+   via the sides being clickable (fixed 60px width for arrows) */
 .iframe-blocker {
     position: absolute;
     top: 0;
-    left: 5%;
-    width: 90%;
+    left: 40px;
+    width: calc(100% - 80px);
     height: 100%;
     z-index: 5;
     background: transparent;
@@ -96,8 +96,8 @@
 
 /* --- VIEWER NOTICE --- */
 .viewer-notice {
-    background: rgba(0, 255, 65, 0.05);
-    border-top: 1px solid rgba(0, 255, 65, 0.2);
+    background: rgba(0, 173, 181, 0.05);
+    border-top: 1px solid rgba(0, 173, 181, 0.2);
     padding: 1rem 1.5rem;
 }
 
@@ -111,7 +111,7 @@
 }
 
 .notice-content svg {
-    color: var(--neon-green);
+    color: var(--cyber-blue-dark);
     flex-shrink: 0;
 }
 
@@ -125,9 +125,9 @@
     align-items: center;
     gap: 0.5rem;
     padding: 0.75rem 1.5rem;
-    border: 2px solid var(--neon-green);
-    color: var(--neon-green);
-    background: rgba(0, 255, 65, 0.1);
+    border: 2px solid var(--cyber-blue-dark);
+    color: var(--cyber-blue-dark);
+    background: rgba(0, 173, 181, 0.1);
     font-size: 0.9rem;
     font-weight: bold;
     cursor: pointer;
@@ -138,9 +138,9 @@
 }
 
 .open-full-btn:hover {
-    background: var(--neon-green);
+    background: var(--cyber-blue-dark);
     color: #000;
-    box-shadow: 0 0 25px rgba(0, 255, 65, 0.4);
+    box-shadow: 0 0 25px rgba(0, 173, 181, 0.4);
 }
 
 /* --- INFO GRID --- */
@@ -167,8 +167,8 @@
     left: -1px;
     width: 20px;
     height: 20px;
-    border-top: 2px solid var(--neon-green);
-    border-left: 2px solid var(--neon-green);
+    border-top: 2px solid var(--cyber-blue-dark);
+    border-left: 2px solid var(--cyber-blue-dark);
 }
 
 .details-panel h1 {
@@ -213,7 +213,7 @@
 }
 
 .blurb-title {
-    color: var(--neon-green);
+    color: var(--cyber-blue-dark);
     font-size: 0.9rem;
     margin-bottom: 0.5rem;
 }

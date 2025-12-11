@@ -189,7 +189,7 @@ export default function FullBookReader({ archiveId, title, height = '80vh' }: Fu
                         alignItems: 'center',
                         justifyContent: 'center',
                         background: '#0a0a0a',
-                        color: '#00ff41',
+                        color: '#00adb5',
                         fontFamily: 'monospace',
                         zIndex: 10
                     }}
@@ -208,7 +208,7 @@ export default function FullBookReader({ archiveId, title, height = '80vh' }: Fu
                             <div style={{
                                 width: '50%',
                                 height: '100%',
-                                background: '#00ff41',
+                                background: '#00adb5',
                                 animation: 'loadingBar 1.5s ease-in-out infinite'
                             }} />
                         </div>

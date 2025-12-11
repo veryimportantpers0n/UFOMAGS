@@ -19,7 +19,7 @@ export default function Navbar() {
       {/* Logo */}
       <div className="navbar-logo">
         <Link href="/" aria-label="Home">
-          <ASCIILogo className="w-20 sm:w-28 md:w-48 lg:w-64 h-auto text-[var(--neon-green)] hover:drop-shadow-[0_0_15px_var(--neon-green)] transition-all duration-300" />
+          <ASCIILogo className="w-20 sm:w-28 md:w-48 lg:w-64 h-auto text-[var(--cyber-blue-dark)] hover:drop-shadow-[0_0_15px_var(--cyber-blue-dark)] transition-all duration-300" />
         </Link>
       </div>
 

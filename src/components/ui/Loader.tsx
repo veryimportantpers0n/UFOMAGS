@@ -26,19 +26,19 @@ export default function Loader() {
 
     return (
         <div
-            className={`fixed top-0 left-0 w-full h-full bg-black z-[10000] flex flex-col justify-center items-center transition-opacity duration-500 ${progress === 100 ? "opacity-0 pointer-events-none" : "opacity-100"
+            className={`fixed top-0 left-0 w-full h-full bg-black/50 backdrop-blur-md z-[10000] flex flex-col justify-center items-center transition-opacity duration-500 ${progress === 100 ? "opacity-0 pointer-events-none" : "opacity-100"
                 }`}
         >
-            <div className="mono text-[var(--neon-green)] mb-5">
-                ESTABLISHING UPLINK...
+            <div className="mono text-[var(--cyber-blue-dark)] mb-5">
+                LOADING SITE
             </div>
             <div className="w-[200px] h-[2px] bg-[#222] relative overflow-hidden">
                 <div
-                    className="absolute top-0 left-0 h-full bg-[var(--neon-green)] transition-all duration-100"
+                    className="absolute top-0 left-0 h-full bg-[var(--cyber-blue-dark)] transition-all duration-100"
                     style={{ width: `${progress}%` }}
                 />
             </div>
-            <div className="mono text-[var(--neon-green)] mt-5">{progress}%</div>
+            <div className="mono text-[var(--cyber-blue-dark)] mt-5">{progress}%</div>
         </div>
     );
 }

@@ -81,11 +81,11 @@ export default function SearchBar({ magazines }: SearchBarProps) {
   return (
     <div ref={searchRef} className="relative w-full">
       {/* Modern Search Container */}
-      <div className="relative bg-black/90 backdrop-blur-xl border-2 border-[#00ff41]/40 rounded-2xl shadow-2xl shadow-[#00ff41]/10 overflow-hidden">
+      <div className="relative bg-black/90 backdrop-blur-xl border-2 border-[#00adb5]/40 rounded-2xl shadow-2xl shadow-[#00adb5]/10 overflow-hidden">
         <div className="flex items-center px-5 py-4">
           {/* Search Icon */}
           <svg
-            className="w-5 h-5 text-[#00ff41] mr-3 flex-shrink-0"
+            className="w-5 h-5 text-[#00adb5] mr-3 flex-shrink-0"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -111,7 +111,7 @@ export default function SearchBar({ magazines }: SearchBarProps) {
                 setResults([]);
                 setShowResults(false);
               }}
-              className="ml-3 text-gray-500 hover:text-[#00ff41] transition-all duration-200 
+              className="ml-3 text-gray-500 hover:text-[#00adb5] transition-all duration-200 
                          hover:scale-110 text-lg flex-shrink-0"
               aria-label="Clear search"
             >
@@ -123,18 +123,18 @@ export default function SearchBar({ magazines }: SearchBarProps) {
 
       {/* Results Dropdown */}
       {showResults && (
-        <div className="absolute z-50 w-full mt-3 bg-black/95 backdrop-blur-xl border-2 border-[#00ff41]/40 
-                        rounded-2xl shadow-2xl shadow-[#00ff41]/20 max-h-96 overflow-y-auto animate-fade-in">
+        <div className="absolute z-50 w-full mt-3 bg-black/95 backdrop-blur-xl border-2 border-[#00adb5]/40 
+                        rounded-2xl shadow-2xl shadow-[#00adb5]/20 max-h-96 overflow-y-auto animate-fade-in">
           {results.length > 0 ? (
             <div className="py-2">
               {results.map((magazine) => (
                 <button
                   key={magazine.id}
                   onClick={() => handleResultClick(magazine.slug)}
-                  className="w-full px-5 py-3 flex items-start gap-4 hover:bg-[#00ff41]/10 
+                  className="w-full px-5 py-3 flex items-start gap-4 hover:bg-[#00adb5]/10 
                              transition-all duration-200 text-left rounded-xl mx-2"
                 >
-                  <div className="flex-shrink-0 w-16 h-20 relative bg-gray-800 rounded-lg overflow-hidden border border-[#00ff41]/20">
+                  <div className="flex-shrink-0 w-16 h-20 relative bg-gray-800 rounded-lg overflow-hidden border border-[#00adb5]/20">
                     <Image
                       src={imageErrors[magazine.id] ? '/placeholder-cover.svg' : magazine.coverImage}
                       alt={`Cover of ${magazine.coverName}, ${magazine.date} issue`}
@@ -145,7 +145,7 @@ export default function SearchBar({ magazines }: SearchBarProps) {
                     />
                   </div>
                   <div className="flex-1 min-w-0">
-                    <h3 className="text-[#00ff41] font-semibold text-sm mb-1 truncate">
+                    <h3 className="text-[#00adb5] font-semibold text-sm mb-1 truncate">
                       {magazine.coverName}
                     </h3>
                     <p className="text-gray-400 text-xs mb-1">{magazine.date}</p>
@@ -158,7 +158,7 @@ export default function SearchBar({ magazines }: SearchBarProps) {
             </div>
           ) : (
             <div className="py-8 text-center">
-              <p className="text-[#00ff41] font-bold text-lg mb-2 glow-green">
+              <p className="text-[#00adb5] font-bold text-lg mb-2 glow-green">
                 NO RESULTS
               </p>
               <p className="text-gray-500 text-sm">

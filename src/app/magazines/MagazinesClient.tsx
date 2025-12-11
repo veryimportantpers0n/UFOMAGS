@@ -44,13 +44,14 @@ export default function MagazinesClient() {
             <MagazineCard
               magazine={{
                 id: 'locked-1',
-                title: 'Data Corrupted',
+                coverName: 'Data Corrupted',
                 slug: '',
-                issue_number: '???',
-                publication_date: '??? ????',
+                issueNumber: '???',
+                date: '??? ????',
                 description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                cover_image: '',
-                archive_url: '',
+                coverImage: '',
+                archiveUrl: '',
+                customText: '',
               } as Magazine}
               onClick={() => { }}
               isLocked={true}
@@ -58,13 +59,14 @@ export default function MagazinesClient() {
             <MagazineCard
               magazine={{
                 id: 'locked-2',
-                title: 'Data Corrupted',
+                coverName: 'Data Corrupted',
                 slug: '',
-                issue_number: '???',
-                publication_date: '??? ????',
+                issueNumber: '???',
+                date: '??? ????',
                 description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                cover_image: '',
-                archive_url: '',
+                coverImage: '',
+                archiveUrl: '',
+                customText: '',
               } as Magazine}
               onClick={() => { }}
               isLocked={true}
@@ -72,13 +74,14 @@ export default function MagazinesClient() {
             <MagazineCard
               magazine={{
                 id: 'locked-3',
-                title: 'Data Corrupted',
+                coverName: 'Data Corrupted',
                 slug: '',
-                issue_number: '???',
-                publication_date: '??? ????',
+                issueNumber: '???',
+                date: '??? ????',
                 description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                cover_image: '',
-                archive_url: '',
+                coverImage: '',
+                archiveUrl: '',
+                customText: '',
               } as Magazine}
               onClick={() => { }}
               isLocked={true}

@@ -57,8 +57,9 @@ export default function MagazineViewer({ magazine }: MagazineViewerProps) {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <span>
-                                    <strong className="green-text">TIP:</strong> For the best reading experience with full page controls,
-                                    open the magazine in Internet Archive's full viewer.
+                                    <strong className="green-text">NOTICE:</strong> All archives are hosted via Internet Archive for copyright preservation.
+                                    The embedded uplink can be unstable - if issues persist, please reset or
+                                    <span className="green-text"> OPEN FULL VIEWER</span>.
                                 </span>
                                 <a
                                     href={magazine.archiveUrl}

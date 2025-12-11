@@ -31,7 +31,7 @@ export default function TypingEffect({
     <span className={className}>
       {displayedText}
       {currentIndex < text.length && (
-        <span className="animate-pulse text-[#00ff41]">▋</span>
+        <span className="animate-pulse text-[#00adb5]">▋</span>
       )}
     </span>
   );

@@ -10,9 +10,9 @@ interface MagazineMetadataProps {
  */
 export default function MagazineMetadata({ magazine }: MagazineMetadataProps) {
   return (
-    <section className="w-full bg-black/30 border border-[#00ff41]/20 rounded p-6 space-y-4" aria-label="Magazine Information">
+    <section className="w-full bg-black/30 border border-[#00adb5]/20 rounded p-6 space-y-4" aria-label="Magazine Information">
       <div>
-        <h2 className="text-2xl font-bold text-[#00ff41] mb-2">
+        <h2 className="text-2xl font-bold text-[#00adb5] mb-2">
           {magazine.coverName}
         </h2>
         <p className="text-gray-400 text-sm">
