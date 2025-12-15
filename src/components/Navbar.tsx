@@ -10,8 +10,9 @@ export default function Navbar() {
   const links = [
     { href: "/", label: "[01] HOME" },
     { href: "/magazines", label: "[02] ARCHIVES" },
-    { href: "/socials", label: "[03] SOCIALS" },
-    { href: "/about", label: "[04] ABOUT" },
+    { href: "/declassified", label: "[03] DECLASSIFIED" },
+    { href: "/socials", label: "[04] SOCIALS" },
+    { href: "/about", label: "[05] ABOUT" },
   ];
 
   return (

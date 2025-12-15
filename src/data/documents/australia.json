@@ -1,0 +1,84 @@
+{
+    "id": "australia",
+    "name": "AUSTRALIA",
+    "emoji": "🇦🇺",
+    "yearStart": "1952",
+    "yearEnd": "1972",
+    "documents": [
+        {
+            "id": "a11066-part-b",
+            "slug": "a11066-part-b",
+            "title": "Series A11066, Part B",
+            "description": "UFO investigation notes",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/A11066_5-1-27_Part B_3315433.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Scanned PDF with page reader"
+        },
+        {
+            "id": "a12639-air",
+            "slug": "a12639-air",
+            "title": "Series A12639",
+            "description": "Air-related UFO reports",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/A12639_5-1-AIR_7267079.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Embeddable via /embed"
+        },
+        {
+            "id": "a703-580-1-1-part-1",
+            "slug": "a703-580-1-1-part-1",
+            "title": "Series A703: Part 1 of 580-1-1",
+            "description": "Initial volume of government UFO files",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/A703_580-1-1_Part 1_645649.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Initial volume"
+        },
+        {
+            "id": "a703-580-1-1-part-10",
+            "slug": "a703-580-1-1-part-10",
+            "title": "Series A703: Part 10 of 580-1-1",
+            "description": "Extended series of UFO investigation reports",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/A703_580-1-1_Part 10_646556.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Extended series"
+        },
+        {
+            "id": "a703-580-1-1-part-20",
+            "slug": "a703-580-1-1-part-20",
+            "title": "Series A703: Part 20 of 580-1-1",
+            "description": "Assessment summaries",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/A703_580-1-1_Part 20_646578.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Assessment summaries"
+        },
+        {
+            "id": "flying-saucers-1954-1955",
+            "slug": "flying-saucers-1954-1955",
+            "title": "Flying Saucers 1954-1955",
+            "description": "Early UFO case files from 1954-1955",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/M1148_Flying Saucers_1954-1955_3215027.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "yearStart": "1954",
+            "yearEnd": "1955",
+            "accessNotes": "Early UFOs"
+        },
+        {
+            "id": "phenomena-mawson-1958",
+            "slug": "phenomena-mawson-1958",
+            "title": "Phenomena-Mawson 1958",
+            "description": "Antarctic sightings from Mawson Station",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/P1556_PHENOMENA-MAWSON_1958_12086483.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "yearStart": "1958",
+            "accessNotes": "Antarctic sightings"
+        },
+        {
+            "id": "ufo-weapons-testing-site",
+            "slug": "ufo-weapons-testing-site",
+            "title": "UFO Sightings at Weapons Testing Site",
+            "description": "General report on UFO activity near weapons testing facilities",
+            "archiveUrl": "https://archive.org/details/AustralianUFOFiles/UFO sightings at weapons testing site.pdf",
+            "thumbnailImage": "/documents/australia/placeholder.jpg",
+            "accessNotes": "Weapons testing site sightings"
+        }
+    ]
+}

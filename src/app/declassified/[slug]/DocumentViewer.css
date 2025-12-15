@@ -1,0 +1,372 @@
+/* ==============================
+   DOCUMENT VIEWER STYLES
+   Styles for declassified document viewer page
+   ============================== */
+
+/* --- PAGE LAYOUT --- */
+.document-slug-page {
+    min-height: 100vh;
+    padding-bottom: 4rem;
+    padding-top: 6rem;
+}
+
+.doc-slug-container {
+    width: 100%;
+}
+
+.doc-content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 5vw;
+}
+
+/* --- VIEWER SECTION --- */
+.doc-viewer-frame {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    margin-bottom: 3rem;
+    position: relative;
+}
+
+.doc-viewer-header {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 0.5rem 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+/* --- IFRAME CONTAINER --- */
+.doc-iframe-container {
+    width: 100%;
+    height: 80vh;
+    position: relative;
+    background: #000;
+}
+
+.doc-iframe-container iframe,
+.doc-viewer-iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Blocker overlay - blocks center clicks but leaves edges for navigation arrows */
+.doc-iframe-blocker {
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: calc(100% - 120px);
+    height: 100%;
+    z-index: 5;
+    background: transparent;
+    cursor: default;
+}
+
+/* --- HIDE SCANLINES ON DOCUMENT PAGES --- */
+body:has([data-page="document-slug"]) .fixed.z-\[999\] {
+    display: none !important;
+}
+
+/* Also hide any scanline overlays that might exist */
+.document-slug-page~.fixed.z-\[999\],
+body:has(.document-slug-page) [class*="scanline"],
+body:has(.document-slug-page) .scanlines {
+    display: none !important;
+}
+
+/* --- VIEWER NOTICE --- */
+.doc-viewer-notice {
+    background: rgba(0, 173, 181, 0.05);
+    border-top: 1px solid rgba(0, 173, 181, 0.2);
+    padding: 1rem 1.5rem;
+}
+
+.doc-notice-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    font-size: 0.85rem;
+    color: #aaa;
+}
+
+.doc-notice-content svg {
+    color: var(--cyber-blue-dark);
+    flex-shrink: 0;
+}
+
+.doc-notice-content span {
+    flex: 1;
+    min-width: 200px;
+}
+
+.doc-open-full-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    border: 2px solid var(--cyber-blue-dark);
+    color: var(--cyber-blue-dark);
+    background: rgba(0, 173, 181, 0.1);
+    font-size: 0.9rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.doc-open-full-btn:hover {
+    background: var(--cyber-blue-dark);
+    color: #000;
+    box-shadow: 0 0 25px rgba(0, 173, 181, 0.4);
+}
+
+/* --- DETAILS SECTION --- */
+.doc-details-section {
+    margin-bottom: 3rem;
+}
+
+.doc-details-panel {
+    background: rgba(20, 20, 25, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+}
+
+.doc-details-panel::before {
+    content: '';
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 20px;
+    height: 20px;
+    border-top: 2px solid var(--cyber-blue-dark);
+    border-left: 2px solid var(--cyber-blue-dark);
+}
+
+.doc-details-panel h1 {
+    font-size: 2rem;
+    line-height: 1.2;
+    margin: 1rem 0;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
+.doc-meta-row {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-bottom: 1rem;
+    flex-wrap: wrap;
+}
+
+.doc-meta-item span {
+    display: block;
+}
+
+.doc-blurb-box {
+    margin-bottom: 2rem;
+}
+
+.doc-blurb-box:last-child {
+    margin-bottom: 0;
+}
+
+.doc-blurb-title {
+    color: var(--cyber-blue-dark);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+}
+
+.doc-blurb-text {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 1rem;
+}
+
+/* --- DOCUMENT CAROUSEL --- */
+.doc-carousel-section {
+    background: rgba(20, 20, 25, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.doc-carousel-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.doc-carousel-title {
+    color: var(--cyber-blue-dark);
+    font-size: 0.9rem;
+}
+
+.doc-carousel-controls {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.doc-carousel-btn {
+    background: rgba(0, 173, 181, 0.1);
+    border: 1px solid var(--cyber-blue-dark);
+    color: var(--cyber-blue-dark);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.doc-carousel-btn:hover {
+    background: var(--cyber-blue-dark);
+    color: #000;
+}
+
+.doc-carousel-track {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: var(--cyber-blue-dark) transparent;
+}
+
+.doc-carousel-track::-webkit-scrollbar {
+    height: 6px;
+}
+
+.doc-carousel-track::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.doc-carousel-track::-webkit-scrollbar-thumb {
+    background: var(--cyber-blue-dark);
+    border-radius: 3px;
+}
+
+.doc-carousel-card {
+    flex: 0 0 200px;
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.doc-carousel-card:hover {
+    border-color: var(--cyber-blue-dark);
+    transform: translateY(-2px);
+}
+
+.doc-carousel-image {
+    width: 100%;
+    height: 120px;
+    position: relative;
+    overflow: hidden;
+    background: #111;
+}
+
+.doc-carousel-img {
+    object-fit: cover;
+}
+
+.doc-carousel-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1a 100%);
+}
+
+.doc-carousel-placeholder-icon {
+    font-size: 2.5rem;
+    opacity: 0.5;
+}
+
+.doc-carousel-info {
+    padding: 0.75rem;
+}
+
+.doc-carousel-card-title {
+    font-size: 0.8rem;
+    color: #fff;
+    margin: 0 0 0.25rem 0;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.doc-carousel-year {
+    font-size: 0.7rem;
+    color: var(--cyber-blue-dark);
+}
+
+/* ==============================
+   RESPONSIVE STYLES
+   ============================== */
+
+@media (max-width: 900px) {
+    .doc-iframe-container {
+        height: 50vh;
+    }
+
+    .doc-details-panel h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .doc-notice-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .doc-notice-content span {
+        min-width: auto;
+    }
+
+    .doc-carousel-card {
+        flex: 0 0 160px;
+    }
+
+    .doc-carousel-image {
+        height: 100px;
+    }
+}
+
+@media (max-width: 600px) {
+    .doc-slug-container {
+        padding: 0 1rem;
+    }
+
+    .doc-details-panel {
+        padding: 1.5rem;
+    }
+
+    .doc-details-panel h1 {
+        font-size: 1.25rem;
+    }
+
+    .doc-meta-row {
+        gap: 1rem;
+    }
+
+    .doc-iframe-container {
+        height: 40vh;
+    }
+}

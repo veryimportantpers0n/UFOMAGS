@@ -1,0 +1,97 @@
+{
+    "id": "majestic-12",
+    "name": "MAJESTIC 12",
+    "emoji": "",
+    "documents": [
+        {
+            "id": "nature-of-survey-fragment",
+            "slug": "nature-of-survey-fragment",
+            "title": "Nature of Survey Fragment",
+            "description": "Partial memo on UFO surveys",
+            "archiveUrl": "https://archive.org/details/air-accident-report-by-twining-to-headquarters",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Scanned fragment"
+        },
+        {
+            "id": "unidentified-aircraft-sightings",
+            "slug": "unidentified-aircraft-sightings",
+            "title": "Unidentified Aircraft Sightings Over the United States",
+            "description": "Report on U.S. sightings",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/%27Unidentified%20Aircraft%20Sightings%20Over%20the%20United%20States%27.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "air-accident-report-twining",
+            "slug": "air-accident-report-twining",
+            "title": "Air Accident Report by Twining to Headquarters",
+            "description": "Crash analysis",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Accident%20Report%20by%20Twining%20to%20Headquarters.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Twining memo"
+        },
+        {
+            "id": "air-intelligence-report-100-203-79",
+            "slug": "air-intelligence-report-100-203-79",
+            "title": "Air Intelligence Report #100-203-79",
+            "description": "Analysis of Flying Object Incidents in the U.S.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Intelligence%20Report%20%23100-203-79-%20Analysis%20of%20Flying%20Object%20Incidents%20in%20the%20U.S..pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Intelligence assessment"
+        },
+        {
+            "id": "amc-opinion-flying-discs",
+            "slug": "amc-opinion-flying-discs",
+            "title": "Air Materiel Command Opinion Concerning Flying Discs",
+            "description": "AMC views on flying disc phenomena",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Materiel%20Command%20(AMC)%20Opinion%20Concerning%20%27Flying%20Discs%27.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "AMC views"
+        },
+        {
+            "id": "eisenhower-briefing-document",
+            "slug": "eisenhower-briefing-document",
+            "title": "Eisenhower Briefing Document",
+            "description": "Famous MJ-12 briefing - Key document",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Eisenhower%20Briefing%20Document.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Key document"
+        },
+        {
+            "id": "cutler-twining-memo",
+            "slug": "cutler-twining-memo",
+            "title": "Cutler to Twining Memo",
+            "description": "Memo from Cutler regarding NSC matters",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Cutler%20to%20Twining%20Memo.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "NSC memo"
+        },
+        {
+            "id": "truman-forrestal-memo",
+            "slug": "truman-forrestal-memo",
+            "title": "Truman to Secretary of Defense Forrestal",
+            "description": "Truman directive establishing MJ-12",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/President%20Truman%20to%20Secretary%20of%20Defense%20James%20Forrestal.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Order"
+        },
+        {
+            "id": "twining-white-hot-report",
+            "slug": "twining-white-hot-report",
+            "title": "Twining's White Hot Report",
+            "description": "Mission Assessment of Recovered Lenticular Aerodyne Objects",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Twining's%20'White%20Hot'%20Report-%20Mission%20Assessment%20of%20Recovered%20Lenticular%20Aerodyne%20Objects.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Assessment"
+        },
+        {
+            "id": "roswell-teletype",
+            "slug": "roswell-teletype",
+            "title": "Roswell Teletype",
+            "description": "Original Roswell incident teletype message",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Roswell%20Teletype.pdf",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Teletype"
+        }
+    ]
+}
