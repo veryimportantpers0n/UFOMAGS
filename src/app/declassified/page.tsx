@@ -1,5 +1,5 @@
 import { Metadata } from 'next';
-import DeclassifiedClient from './DeclassifiedClient';
+import DeclassifiedClient from '@/app/declassified/DeclassifiedClient';
 import { generateSEOMetadata } from '@/lib/seo';
 
 /**

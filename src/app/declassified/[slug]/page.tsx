@@ -2,7 +2,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { generateSEOMetadata } from '@/lib/seo';
 import { allDocuments, findDocumentBySlug, getCategoryForDocument } from '@/data/documents';
-import DocumentViewer from './DocumentViewer';
+import DocumentViewer from '@/app/declassified/[slug]/DocumentViewer';
 
 interface PageProps {
     params: Promise<{

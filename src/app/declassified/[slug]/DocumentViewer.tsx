@@ -39,7 +39,7 @@ export default function DocumentViewer({ document, category }: DocumentViewerPro
                             <span>DOCUMENT VIEWER</span>
                         </div>
 
-                        {/* Iframe container with blocker - allows side arrows but blocks center clicks */}
+                        {/* Iframe container - no blocker to allow full interaction */}
                         <div className="doc-iframe-container">
                             <iframe
                                 src={embedUrl}
@@ -48,8 +48,6 @@ export default function DocumentViewer({ document, category }: DocumentViewerPro
                                 title={document.title}
                                 className="doc-viewer-iframe"
                             />
-                            {/* Overlay blocks center clicks but leaves edges for navigation arrows */}
-                            <div className="doc-iframe-blocker" />
                         </div>
 
                         {/* Notice */}

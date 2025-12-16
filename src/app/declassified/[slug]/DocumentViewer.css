@@ -53,18 +53,6 @@
     border: none;
 }
 
-/* Blocker overlay - blocks center clicks but leaves edges for navigation arrows */
-.doc-iframe-blocker {
-    position: absolute;
-    top: 0;
-    left: 60px;
-    width: calc(100% - 120px);
-    height: 100%;
-    z-index: 5;
-    background: transparent;
-    cursor: default;
-}
-
 /* --- HIDE SCANLINES ON DOCUMENT PAGES --- */
 body:has([data-page="document-slug"]) .fixed.z-\[999\] {
     display: none !important;
