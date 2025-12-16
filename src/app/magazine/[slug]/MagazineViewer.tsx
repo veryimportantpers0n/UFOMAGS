@@ -29,7 +29,7 @@ export default function MagazineViewer({ magazine }: MagazineViewerProps) {
                     <section className="viewer-frame">
                         <div className="viewer-header mono">
                             <Link href="/magazines" className="green-text hover:text-cyan-400 no-underline transition-colors duration-200">
-                                &lt; RETURN TO ARCHIVE
+                                &lt; RETURN TO MAGAZINES
                             </Link>
                             <span>EMBED VIEWER</span>
                         </div>

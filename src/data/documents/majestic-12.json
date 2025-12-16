@@ -4,94 +4,130 @@
     "emoji": "",
     "documents": [
         {
-            "id": "nature-of-survey-fragment",
-            "slug": "nature-of-survey-fragment",
-            "title": "Nature of Survey Fragment",
-            "description": "Partial memo on UFO surveys",
+            "id": "air-accident-report",
+            "slug": "air-accident-report",
+            "title": "Air Accident Report",
+            "description": "Air Accident Report by Twining To Headquarters",
             "archiveUrl": "https://archive.org/details/air-accident-report-by-twining-to-headquarters",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
             "accessNotes": "Scanned fragment"
         },
         {
-            "id": "unidentified-aircraft-sightings",
-            "slug": "unidentified-aircraft-sightings",
-            "title": "Unidentified Aircraft Sightings Over the United States",
-            "description": "Report on U.S. sightings",
+            "id": "air-intelligence-report-100-203-79",
+            "slug": "air-intelligence-report-100-203-79",
+            "title": "Air Intelligence Report # 100 203 79",
+            "description": "Analysis Of Flying Object Incidents In The U.S",
             "archiveUrl": "https://archive.org/details/air-intelligence-report-100-203-79-analysis-of-flying-object-incidents-in-the-u.-s.",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
             "accessNotes": "Full report"
         },
         {
-            "id": "air-accident-report-twining",
-            "slug": "air-accident-report-twining",
-            "title": "Air Accident Report by Twining to Headquarters",
-            "description": "Crash analysis",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Accident%20Report%20by%20Twining%20to%20Headquarters.pdf",
+            "id": "concepts-for-detection-of-et-life",
+            "slug": "concepts-for-detection-of-et-life",
+            "title": "Concepts For Detection Of ET Life",
+            "description": "Concepts for detection of ET life by NASA",
+            "archiveUrl": "https://archive.org/details/concepts-for-detection-of-et-life",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Twining memo"
-        },
-        {
-            "id": "air-intelligence-report-100-203-79",
-            "slug": "air-intelligence-report-100-203-79",
-            "title": "Air Intelligence Report #100-203-79",
-            "description": "Analysis of Flying Object Incidents in the U.S.",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Intelligence%20Report%20%23100-203-79-%20Analysis%20of%20Flying%20Object%20Incidents%20in%20the%20U.S..pdf",
-            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Intelligence assessment"
-        },
-        {
-            "id": "amc-opinion-flying-discs",
-            "slug": "amc-opinion-flying-discs",
-            "title": "Air Materiel Command Opinion Concerning Flying Discs",
-            "description": "AMC views on flying disc phenomena",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Air%20Materiel%20Command%20(AMC)%20Opinion%20Concerning%20%27Flying%20Discs%27.pdf",
-            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "AMC views"
+            "accessNotes": "Full report"
         },
         {
             "id": "eisenhower-briefing-document",
             "slug": "eisenhower-briefing-document",
             "title": "Eisenhower Briefing Document",
-            "description": "Famous MJ-12 briefing - Key document",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Eisenhower%20Briefing%20Document.pdf",
+            "description": "Preliminary briefing for President-elect Eisenhower on Majestic-12 operations and UFO recoveries",
+            "archiveUrl": "https://archive.org/details/eisenhower-briefing-document",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Key document"
+            "accessNotes": "Full report"
         },
         {
-            "id": "cutler-twining-memo",
-            "slug": "cutler-twining-memo",
-            "title": "Cutler to Twining Memo",
-            "description": "Memo from Cutler regarding NSC matters",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Cutler%20to%20Twining%20Memo.pdf",
+            "id": "electro-magnetic-effects-associated-with-unidentified-flying-objects",
+            "slug": "electro-magnetic-effects-associated-with-unidentified-flying-objects",
+            "title": "Electro Magnetic Effects Associated With Unidentified Flying Objects",
+            "description": "NICAP report from June 1960 detailing electromagnetic effects linked to UFO sightings and encounters",
+            "archiveUrl": "https://archive.org/details/electro-magnetic-effects-associated-with-unidentified-flying-objects",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "NSC memo"
+            "accessNotes": "Full report"
         },
         {
-            "id": "truman-forrestal-memo",
-            "slug": "truman-forrestal-memo",
-            "title": "Truman to Secretary of Defense Forrestal",
-            "description": "Truman directive establishing MJ-12",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/President%20Truman%20to%20Secretary%20of%20Defense%20James%20Forrestal.pdf",
+            "id": "important-memo-from-source-s-1",
+            "slug": "important-memo-from-source-s-1",
+            "title": "Important Memo From Source S 1",
+            "description": "Memo dated 7 July 1999 from Source S-1, purportedly a CIA counterintelligence operative, revealing details on Majestic-12 operations, UFO cover-ups, and related government secrets",
+            "archiveUrl": "https://archive.org/details/important-memo-from-source-s-1",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Order"
+            "accessNotes": "Full MEMO"
         },
         {
-            "id": "twining-white-hot-report",
-            "slug": "twining-white-hot-report",
-            "title": "Twining's White Hot Report",
-            "description": "Mission Assessment of Recovered Lenticular Aerodyne Objects",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Twining's%20'White%20Hot'%20Report-%20Mission%20Assessment%20of%20Recovered%20Lenticular%20Aerodyne%20Objects.pdf",
+            "id": "joint-r-d-annexes-agenda-of-5th-meeting",
+            "slug": "joint-r-d-annexes-agenda-of-5th-meeting",
+            "title": "Joint R&D Annexes, Agenda Of 5th Meeting",
+            "description": "December 1946 agenda and annexes for the 5th meeting of the Joint R&D Board, including directives on electronics and biological warfare committees, and personnel roster, in the context of early Majestic-12 UFO-related research and development",
+            "archiveUrl": "https://archive.org/details/joint-r-d-annexes-agenda-of-5th-meeting",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Assessment"
+            "accessNotes": "Full report"
         },
         {
-            "id": "roswell-teletype",
-            "slug": "roswell-teletype",
-            "title": "Roswell Teletype",
-            "description": "Original Roswell incident teletype message",
-            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only/Roswell%20Teletype.pdf",
+            "id": "joint-r-d-board-security-regulations",
+            "slug": "joint-r-d-board-security-regulations",
+            "title": "Joint R&D Board Security Regulations",
+            "description": "Security regulations issued by the Joint Research and Development Board on 15 June 1947, outlining classification procedures, handling of top-secret information, and security protocols, in the context of early post-WWII research potentially linked to UFO investigations and Majestic-12 operations",
+            "archiveUrl": "https://archive.org/details/joint-r-d-board-security-regulation",
             "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
-            "accessNotes": "Teletype"
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-assessment-situation-statement-position-ufos",
+            "slug": "majestic-12-documents-for-majic-eyes-only-assessment-situation-statement-position-ufos",
+            "title": "Majestic 12 Documents For Majic Eyes Only Assessment Situation Statement Position UFOs",
+            "description": "Documents related to the Majestic-12 group marked 'For Majic Eyes Only,' containing a situational assessment and a formal statement of position regarding Unidentified Flying Objects.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-assessment-situation-statement-position-ufos",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-jfk-mj-12",
+            "slug": "majestic-12-documents-for-majic-eyes-only-jfk-mj-12",
+            "title": "Majestic 12 Documents For Majic Eyes Only JFK MJ 12",
+            "description": "Restricted Majestic-12 documents marked 'For Majic Eyes Only' concerning President John F. Kennedy, detailing interactions or correspondence between JFK and the MJ-12 group regarding extraterrestrial phenomena.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-jfk-mj-12",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-majestic-2017",
+            "slug": "majestic-12-documents-for-majic-eyes-only-majestic-2017",
+            "title": "Majestic 12 Documents For Majic Eyes Only Majestic 2017",
+            "description": "A 2017 compilation of Majestic-12 documents marked 'For Majic Eyes Only,' featuring the 'Assessment of the Situation on Unidentified Flying Objects' and other related intelligence briefings.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-majestic-2017",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-mj-12-intel-estimate",
+            "slug": "majestic-12-documents-for-majic-eyes-only-mj-12-intel-estimate",
+            "title": "Majestic 12 Documents For Majic Eyes Only MJ 12 Intel Estimate",
+            "description": "Restricted Majestic-12 intelligence documents marked 'For Majic Eyes Only,' providing a strategic intelligence estimate regarding the nature, capabilities, and implications of Unidentified Flying Objects.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-mj-12-intel-estimate",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-mj-12-one-year-assessment",
+            "slug": "majestic-12-documents-for-majic-eyes-only-mj-12-one-year-assessment",
+            "title": "Majestic 12 Documents For Majic Eyes Only MJ 12 One Year Assessment",
+            "description": "Restricted Majestic-12 documents marked 'For Majic Eyes Only,' providing a comprehensive one-year assessment of data, activities, and analysis regarding the UFO phenomenon.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-mj-12-one-year-assessment",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "majestic-12-documents-for-majic-eyes-only-mj-12-som",
+            "slug": "majestic-12-documents-for-majic-eyes-only-mj-12-som",
+            "title": "Majestic 12 Documents For Majic Eyes Only MJ 12 SOM",
+            "description": "Restricted Majestic-12 documents marked 'For Majic Eyes Only' containing the Special Operations Manual (SOM), detailing protocols for the recovery, handling, and security of extraterrestrial craft and biological entities.",
+            "archiveUrl": "https://archive.org/details/majestic-12-documents-for-majic-eyes-only-mj-12-som",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
         }
     ]
 }
