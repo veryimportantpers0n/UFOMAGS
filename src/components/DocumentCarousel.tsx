@@ -1,19 +1,20 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useRef } from 'react';
 import { useRouter } from 'next/navigation';
-import Image from 'next/image';
 import type { Document } from '@/types/document';
+import HoloIcon from './HoloIcon';
+import { getIconForDocument, getIconPath } from '@/utils/iconMapping';
 
 interface DocumentCarouselProps {
     documents: Document[];
     currentSlug: string;
+    categoryId?: string;
 }
 
-export default function DocumentCarousel({ documents, currentSlug }: DocumentCarouselProps) {
+export default function DocumentCarousel({ documents, currentSlug, categoryId }: DocumentCarouselProps) {
     const router = useRouter();
     const scrollRef = useRef<HTMLDivElement>(null);
-    const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
 
     // Filter out current document
     const relatedDocs = documents.filter(doc => doc.slug !== currentSlug);
@@ -23,9 +24,6 @@ export default function DocumentCarousel({ documents, currentSlug }: DocumentCar
         return null;
     }
 
-    const handleImageError = (slug: string) => {
-        setImageErrors(prev => ({ ...prev, [slug]: true }));
-    };
 
     const scroll = (direction: 'left' | 'right') => {
         if (scrollRef.current) {
@@ -66,47 +64,46 @@ export default function DocumentCarousel({ documents, currentSlug }: DocumentCar
             </div>
 
             <div className="doc-carousel-track" ref={scrollRef}>
-                {relatedDocs.map((doc) => (
-                    <article
-                        key={doc.id}
-                        className="doc-carousel-card"
-                        onClick={() => handleDocumentClick(doc.slug)}
-                        onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                                e.preventDefault();
-                                handleDocumentClick(doc.slug);
-                            }
-                        }}
-                        role="button"
-                        tabIndex={0}
-                    >
-                        <div className="doc-carousel-image">
-                            {imageErrors[doc.slug] || !doc.thumbnailImage ? (
-                                <div className="doc-carousel-placeholder">
-                                    <span className="doc-carousel-placeholder-icon">📄</span>
+                {relatedDocs.map((doc) => {
+                    const iconType = getIconForDocument(doc, categoryId);
+                    const iconPath = getIconPath(iconType);
+
+                    return (
+                        <article
+                            key={doc.id}
+                            className="doc-carousel-card"
+                            onClick={() => handleDocumentClick(doc.slug)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleDocumentClick(doc.slug);
+                                }
+                            }}
+                            role="button"
+                            tabIndex={0}
+                        >
+                            <div className="doc-carousel-image">
+                                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                                    <div style={{ width: '50%', height: '50%', position: 'relative' }}>
+                                        <HoloIcon
+                                            src={iconPath}
+                                            alt={`${iconType} Hologram`}
+                                            color="#00adb5"
+                                        />
+                                    </div>
                                 </div>
-                            ) : (
-                                <Image
-                                    src={doc.thumbnailImage}
-                                    alt={doc.title}
-                                    fill
-                                    sizes="200px"
-                                    className="doc-carousel-img"
-                                    loading="lazy"
-                                    onError={() => handleImageError(doc.slug)}
-                                />
-                            )}
-                        </div>
-                        <div className="doc-carousel-info">
-                            <h4 className="doc-carousel-card-title">{doc.title}</h4>
-                            {(doc.yearStart || doc.yearEnd) && (
-                                <span className="doc-carousel-year mono">
-                                    {doc.yearStart}{doc.yearEnd ? ` - ${doc.yearEnd}` : ''}
-                                </span>
-                            )}
-                        </div>
-                    </article>
-                ))}
+                            </div>
+                            <div className="doc-carousel-info">
+                                <h4 className="doc-carousel-card-title">{doc.title}</h4>
+                                {(doc.yearStart || doc.yearEnd) && (
+                                    <span className="doc-carousel-year mono">
+                                        {doc.yearStart}{doc.yearEnd ? ` - ${doc.yearEnd}` : ''}
+                                    </span>
+                                )}
+                            </div>
+                        </article>
+                    );
+                })}
             </div>
         </section>
     );

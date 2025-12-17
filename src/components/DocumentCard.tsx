@@ -3,15 +3,17 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import type { Document } from '@/types/document';
+import HoloIcon from './HoloIcon';
+import { getIconForDocument, getIconPath } from '@/utils/iconMapping';
 
 interface DocumentCardProps {
     document: Document;
     onClick: () => void;
     showYear?: boolean;
+    categoryId?: string;
 }
 
-export default function DocumentCard({ document, onClick, showYear = true }: DocumentCardProps) {
-    const [imageError, setImageError] = useState(false);
+export default function DocumentCard({ document, onClick, showYear = true, categoryId }: DocumentCardProps) {
 
     // Format year range display
     const yearDisplay = document.yearStart
@@ -19,6 +21,10 @@ export default function DocumentCard({ document, onClick, showYear = true }: Doc
             ? `${document.yearStart} - ${document.yearEnd}`
             : document.yearStart
         : null;
+
+    // Get Icon Type
+    const iconType = getIconForDocument(document, categoryId);
+    const iconPath = getIconPath(iconType);
 
     return (
         <article
@@ -35,22 +41,15 @@ export default function DocumentCard({ document, onClick, showYear = true }: Doc
             aria-label={`View ${document.title}`}
         >
             <div className="doc-card-image">
-                {imageError || !document.thumbnailImage ? (
-                    <div className="doc-card-placeholder">
-                        <span className="doc-card-placeholder-icon">📄</span>
-                        <span className="doc-card-placeholder-text mono">CLASSIFIED</span>
+                <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <div style={{ width: '50%', height: '50%', position: 'relative' }}>
+                        <HoloIcon
+                            src={iconPath}
+                            alt={`${iconType} Hologram`}
+                            color="#00adb5"
+                        />
                     </div>
-                ) : (
-                    <Image
-                        src={document.thumbnailImage}
-                        alt={document.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, 300px"
-                        className="doc-card-img"
-                        loading="lazy"
-                        onError={() => setImageError(true)}
-                    />
-                )}
+                </div>
             </div>
             <div className="doc-card-content">
                 <h3 className="doc-card-title">{document.title}</h3>

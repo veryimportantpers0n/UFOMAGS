@@ -17,7 +17,7 @@ export interface Document {
     /** Internet Archive URL */
     archiveUrl: string;
 
-    /** Path to thumbnail image (optional) */
+    /** Path to thumbnail image (optional) - DEPRECATED in favor of HoloIcon logic */
     thumbnailImage?: string;
 
     /** Start year of the document (optional) */

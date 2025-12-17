@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import { Magazine } from '@/types/magazine';
+import HoloIcon from './HoloIcon';
 
 interface MagazineCardProps {
   magazine: Magazine;
@@ -62,22 +63,15 @@ export default function MagazineCard({ magazine, onClick, isLocked = false }: Ma
       aria-label={`View ${magazine.coverName}, ${magazine.date}`}
     >
       <div className="img-wrapper">
-        {imageError ? (
-          <img
-            src="https://placehold.co/600x800/1a1a1a/FFF?text=NO+IMAGE"
-            alt={`Cover of ${magazine.coverName}`}
-          />
-        ) : (
-          <Image
-            src={magazine.coverImage || '/placeholder-cover.svg'}
-            alt={`Cover of ${magazine.coverName}, ${magazine.date}`}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="mag-img"
-            loading="lazy"
-            onError={() => setImageError(true)}
-          />
-        )}
+        <div style={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+          <div style={{ width: '50%', height: '50%', position: 'relative' }}>
+            <HoloIcon
+              src="/icons/magazine.svg"
+              alt="Magazine Hologram"
+              color="#00adb5" // CYBER_BLUE
+            />
+          </div>
+        </div>
       </div>
       <div className="content">
         <div>

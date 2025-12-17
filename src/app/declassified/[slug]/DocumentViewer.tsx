@@ -112,6 +112,7 @@ export default function DocumentViewer({ document, category }: DocumentViewerPro
                     <DocumentCarousel
                         documents={category.documents}
                         currentSlug={document.slug}
+                        categoryId={category.id}
                     />
                 </div>
             </div>

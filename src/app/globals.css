@@ -1301,3 +1301,82 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+/* ==============================
+   HOLOGRAPHIC ICON STYLES
+   ============================== */
+
+/* 1. The Container: Sets the stage for 3D */
+.holo-container {
+  perspective: 800px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.holo-icon-wrapper {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  animation:
+    holoSpin 6s linear infinite,
+    holoFloat 3s ease-in-out infinite alternate;
+}
+
+/* 2. The Hologram: The spinning element */
+.holo-icon-img {
+  object-fit: contain;
+  opacity: 0.9;
+  transform-style: preserve-3d;
+}
+
+/* 3. The Flicker: Adds realism on hover */
+.holo-container:hover .holo-icon-wrapper {
+  animation:
+    holoSpin 2s linear infinite,
+    holoFlicker 0.2s infinite;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes holoSpin {
+  from {
+    transform: rotateY(0deg);
+  }
+
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes holoFloat {
+  from {
+    margin-top: -5px;
+  }
+
+  to {
+    margin-top: 5px;
+  }
+}
+
+@keyframes holoFlicker {
+  0% {
+    opacity: 0.9;
+  }
+
+  50% {
+    opacity: 0.5;
+  }
+
+  51% {
+    opacity: 0.9;
+  }
+
+  100% {
+    opacity: 0.8;
+  }
+}

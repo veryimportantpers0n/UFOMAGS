@@ -46,6 +46,7 @@ export default function CategorySection({ category }: CategorySectionProps) {
                     <DocumentCard
                         key={doc.id}
                         document={doc}
+                        categoryId={category.id}
                         onClick={() => handleDocumentClick(doc.slug)}
                     />
                 ))}
