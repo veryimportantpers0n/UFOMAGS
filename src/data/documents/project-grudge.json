@@ -1,0 +1,79 @@
+{
+    "id": "project-grudge",
+    "name": "PROJECT GRUDGE",
+    "emoji": "",
+    "documents": [
+        {
+            "id": "project-grudge-august-1949-part-1",
+            "slug": "project-grudge-august-1949-part-1",
+            "title": "Project Grudge August 1949 Part 1",
+            "description": "Part 1 of the official U.S. Air Force Project Grudge report issued in August 1949, succeeding Project Sign, detailing the initial assessment and investigation procedures for Unidentified Flying Objects.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-1",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-2",
+            "slug": "project-grudge-august-1949-part-2",
+            "title": "Project Grudge August 1949 Part 2",
+            "description": "Part 2 of the August 1949 Project Grudge report, continuing the analysis of UFO sighting data and technical evaluations conducted by Air Force personnel.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-2",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-3",
+            "slug": "project-grudge-august-1949-part-3",
+            "title": "Project Grudge August 1949 Part 3",
+            "description": "Part 3 of the August 1949 Project Grudge report, containing case files and astronomical analysis regarding specific aerial phenomena reports.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-3",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-4",
+            "slug": "project-grudge-august-1949-part-4",
+            "title": "Project Grudge August 1949 Part 4",
+            "description": "Part 4 of the August 1949 Project Grudge report, featuring further documentation and psychological analysis of witnesses involved in UFO sightings.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-4",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-5",
+            "slug": "project-grudge-august-1949-part-5",
+            "title": "Project Grudge August 1949 Part 5",
+            "description": "Part 5 of the August 1949 Project Grudge report, continuing the comprehensive review of unidentified aerial objects recorded by the Air Force.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-5",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-6",
+            "slug": "project-grudge-august-1949-part-6",
+            "title": "Project Grudge August 1949 Part 6",
+            "description": "Part 6 of the August 1949 Project Grudge report, detailing additional case summaries and investigative findings regarding the UFO phenomenon.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-6",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-7",
+            "slug": "project-grudge-august-1949-part-7",
+            "title": "Project Grudge August 1949 Part 7",
+            "description": "Part 7 of the August 1949 Project Grudge report, covering late-stage analysis and appendices related to the Air Force's investigation into flying discs.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-7",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        },
+        {
+            "id": "project-grudge-august-1949-part-8",
+            "slug": "project-grudge-august-1949-part-8",
+            "title": "Project Grudge August 1949 Part 8",
+            "description": "Part 8 (Final) of the August 1949 Project Grudge report, containing the summary, conclusions, and recommendations regarding the future of UFO investigations.",
+            "archiveUrl": "https://archive.org/details/project-grudge-august-1949-part-8",
+            "thumbnailImage": "/documents/majestic-12/placeholder.jpg",
+            "accessNotes": "Full report"
+        }
+    ]
+}

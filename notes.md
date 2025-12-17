@@ -68,3 +68,52 @@ All our magazines are hosted on the internet archeive for copyright reasons, the
 change this:
 
 For the best reading experience with full page controls, open the magazine in Internet Archive's full viewer.
+
+
+
+
+New goal
+
+
+is to add social and about to one page put the boxes each on one side. 
+
+
+
+Instead of using images for all the doucments and having hundereds of images i think its better to use SVGs, I have created a folder called SVGs and have put all the SVGs in there. in testing and hte folder is called "SVG ICONS".
+
+Can we make a master docuemnt that says what uses what and find the optimal location to put the svg that is neat and tidy but also works when i upload the site to host on cloudflare pages as a static site.
+
+types of documemnts and what svg they use:
+
+Alien sighting : alien.svg
+Documents on crafts : craft.svg
+Full report : fullreport.svg
+One that are leaks: intelligence.svg
+legal docs : legal.svg
+logs : logs.svg
+All magazines will use : magazine.svg
+Reseach file will use : research.svg
+
+
+there is also a file called "hologrameffectidea.md" which my idea is to make these svgs have a holographic effect, i dont know if this is the best way but to use as refrence when we implement it, i think to keep the site neat we make it a seprate component aswell. 
+
+
+can you now write a gameplan to replace using the images an use these svgs in all the relvant places, the ones i can think of is the http://localhost:3000/magazines/, http://localhost:3000/declassified/ and when you are on document slug the icons for hte files in the ":: RELATED DOCUMENTS" under the doucment.
+
+Can you now do a serach of how the site currently handles it and make a implentation plan.
+
+
+
+
+
+
+
+
+
+
+
+
+full memo: Logs.svg
+
+
+All highly redacted will use : highlyredacted.svg

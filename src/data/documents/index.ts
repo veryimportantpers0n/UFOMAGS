@@ -3,16 +3,19 @@ import type { DocumentCategory, Document, DocumentWithCategory } from '@/types/d
 // Import category JSON files
 import majestic12Data from './majestic-12.json';
 import australiaData from './australia.json';
+import projectGrudgeData from './project-grudge.json';
 
 // Type assertion for imported JSON
 const majestic12 = majestic12Data as DocumentCategory;
 const australia = australiaData as DocumentCategory;
+const projectGrudge = projectGrudgeData as DocumentCategory;
 
 /**
  * All document categories
  */
 export const documentCategories: DocumentCategory[] = [
     majestic12,
+    projectGrudge,
     australia,
 ];
 

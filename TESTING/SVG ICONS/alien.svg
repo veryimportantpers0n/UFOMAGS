@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <!-- Head Shape -->
+  <path d="M12 2c-4 0-8 5-8 12 0 6 4 9 8 9s8-3 8-9c0-7-4-12-8-12z"></path>
+  <!-- Left Eye -->
+  <ellipse cx="8" cy="13" rx="2" ry="3" transform="rotate(-15 8 13)"></ellipse>
+  <!-- Right Eye -->
+  <ellipse cx="16" cy="13" rx="2" ry="3" transform="rotate(15 16 13)"></ellipse>
+</svg>
