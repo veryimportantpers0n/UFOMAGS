@@ -42,16 +42,17 @@ export function getIconForDocument(doc: Document, categoryId?: string): IconType
         const note = doc.accessNotes.toUpperCase();
 
         // Direct assignment command in notes
+        // Specific checks for multi-word or variations
         if (note.includes('ICON: ALIEN')) return 'alien';
-        if (note.includes('ICON: CRAFT')) return 'craft';
-        if (note.includes('ICON: FULLREPORT')) return 'fullreport';
-        if (note.includes('ICON: INTELLIGENCE')) return 'intelligence';
+        if (note.includes('ICON: CRAFT') || note.includes('ICON: UFO CRAFT')) return 'craft';
+        if (note.includes('ICON: FULLREPORT') || note.includes('ICON: FULL REPORT')) return 'fullreport';
+        if (note.includes('ICON: INTELLIGENCE') || note.includes('ICON: INTEL')) return 'intelligence';
         if (note.includes('ICON: LEGAL')) return 'legal';
-        if (note.includes('ICON: LOGS')) return 'logs';
+        if (note.includes('ICON: LOGS') || note.includes('ICON: LOG')) return 'logs';
         if (note.includes('ICON: MAGAZINE')) return 'magazine';
         if (note.includes('ICON: RESEARCH')) return 'research';
 
-        // Keyword matching in notes
+        // Keyword matching in notes (if ICON command not found or partial matches)
         if (note.includes('SIGHTING') || note.includes('CONTACT')) return 'alien';
         if (note.includes('VEHICLE') || note.includes('SAUCER')) return 'craft';
         if (note.includes('RESEARCH') || note.includes('STUDY')) return 'research';
@@ -86,4 +87,15 @@ export function getIconForDocument(doc: Document, categoryId?: string): IconType
 
 export function getIconPath(type: IconType): string {
     return ICON_PATHS[type];
+}
+
+/**
+ * Strips the 'ICON: [NAME]' command from the access notes for display purposes.
+ */
+export function formatAccessNotes(notes: string | undefined): string | null {
+    if (!notes) return null;
+    // Replace "ICON: ..." and everything after it (assuming it's at the end) 
+    // OR try to be smart about multi-word values. 
+    // Given the issues, removing ICON: and the rest of the line is safest if user appends it.
+    return notes.replace(/ICON:.*$/i, '').trim();
 }

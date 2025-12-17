@@ -227,6 +227,8 @@ body:has(.document-slug-page) .scanlines {
     gap: 1rem;
     overflow-x: auto;
     scroll-behavior: smooth;
+    padding-top: 5px;
+    /* Added to prevent hover border cutoff */
     padding-bottom: 0.5rem;
     scrollbar-width: thin;
     scrollbar-color: var(--cyber-blue-dark) transparent;
@@ -262,7 +264,7 @@ body:has(.document-slug-page) .scanlines {
     width: 100%;
     height: 120px;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; Removed to fix 3D icon disappearance */
     background: #111;
 }
 

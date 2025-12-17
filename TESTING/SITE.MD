@@ -11,4 +11,17 @@ ICON: RESEARCH -> Research Atom
 Example:
 json
 "accessNotes": "Top Secret. ICON: ALIEN"
+
+
+ICON: Alien Head
+ICON: Ufo Craft
+ICON: Full Report Folder
+ICON: Intel Folder
+ICON: Legal Document
+ICON: Log File
+ICON: Magazine
+ICON: Research Atom
+
+
+
 Note: If you don't speicify one, it will try to guess based on existing keywords like "log", "report", etc., or use the category default.

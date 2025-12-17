@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Background from '@/components/Background';
 import DocumentCarousel from '@/components/DocumentCarousel';
 import type { DocumentWithCategory, DocumentCategory } from '@/types/document';
+import { formatAccessNotes } from '@/utils/iconMapping';
 import './DocumentViewer.css';
 
 interface DocumentViewerProps {
@@ -94,7 +95,7 @@ export default function DocumentViewer({ document, category }: DocumentViewerPro
                                 {document.accessNotes && (
                                     <div className="doc-meta-item">
                                         <span className="label">ACCESS NOTES</span>
-                                        <span className="value">{document.accessNotes}</span>
+                                        <span className="value">{formatAccessNotes(document.accessNotes)}</span>
                                     </div>
                                 )}
                             </div>

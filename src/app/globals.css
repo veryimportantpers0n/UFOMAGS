@@ -1322,6 +1322,8 @@ body {
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
+  will-change: transform, opacity;
+  /* Hint to browser to promote layer */
   animation:
     holoSpin 6s linear infinite,
     holoFloat 3s ease-in-out infinite alternate;
@@ -1332,6 +1334,10 @@ body {
   object-fit: contain;
   opacity: 0.9;
   transform-style: preserve-3d;
+  backface-visibility: visible;
+  /* Ensure it stays visible during rotation */
+  transform: translateZ(1px);
+  /* Force it slightly forward in 3D space */
 }
 
 /* 3. The Flicker: Adds realism on hover */
