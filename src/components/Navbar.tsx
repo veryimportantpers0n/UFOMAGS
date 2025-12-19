@@ -11,8 +11,7 @@ export default function Navbar() {
     { href: "/", label: "[01] HOME" },
     { href: "/magazines", label: "[02] MAGAZINES" },
     { href: "/declassified", label: "[03] DOCUMENTS" },
-    { href: "/socials", label: "[04] SOCIALS" },
-    { href: "/about", label: "[05] ABOUT" },
+    { href: "/about", label: "[04] ABOUT" },
   ];
 
   return (

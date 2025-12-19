@@ -276,18 +276,7 @@ body {
    SOCIALS PAGE STYLES
    ============================== */
 
-.socials-page {
-  height: 100vh;
-  height: 100dvh;
-  /* Dynamic viewport height for mobile */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 3rem 1.5rem 1rem;
-  overflow: hidden;
-  box-sizing: border-box;
-}
+/* .socials-page removed */
 
 /* --- LINKS CONTAINER --- */
 .links-container {
@@ -457,6 +446,27 @@ body {
   flex-direction: column;
   gap: 1.25rem;
   z-index: 10;
+}
+
+@media (min-width: 1024px) {
+  .about-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    /* align-items: start; REMOVED to allow stretching */
+  }
+}
+
+.about-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  /* Ensure it fills the grid cell */
+}
+
+.about-column.right-column {
+  justify-content: space-between;
 }
 
 /* --- DOSSIER CARD --- */

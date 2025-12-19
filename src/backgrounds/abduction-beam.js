@@ -3,7 +3,10 @@ let camera, scene, renderer, effect, particles;
 let animationId;
 
 export function init(container, THREE, AsciiEffect) {
-    camera = new THREE.PerspectiveCamera(70, window.innerWidth / window.innerHeight, 1, 1000);
+    const width = container.clientWidth;
+    const height = container.clientHeight;
+
+    camera = new THREE.PerspectiveCamera(70, width / height, 1, 1000);
     camera.position.z = 250;
     camera.position.y = 50;
 
@@ -32,7 +35,7 @@ export function init(container, THREE, AsciiEffect) {
     const pGeo = new THREE.TetrahedronGeometry(4);
     const pMat = new THREE.MeshBasicMaterial({ color: 0xffffff });
 
-    for(let i=0; i<50; i++) {
+    for (let i = 0; i < 50; i++) {
         const p = new THREE.Mesh(pGeo, pMat);
         resetParticle(p);
         particles.add(p);
@@ -40,16 +43,35 @@ export function init(container, THREE, AsciiEffect) {
     scene.add(particles);
 
     renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setSize(width, height);
 
     // Use vertical bars to simulate light beam characters
     effect = new AsciiEffect(renderer, ' .|lI', { invert: true });
-    effect.setSize(window.innerWidth, window.innerHeight);
-    effect.domElement.style.color = '#0f0';
-    effect.domElement.style.backgroundColor = 'black';
+    effect.setSize(width, height);
+    effect.domElement.style.color = '#00adb5'; // Cyan to match site theme
+    effect.domElement.style.backgroundColor = 'rgba(0,0,0,0.5)';
+    effect.domElement.style.position = 'absolute';
+    effect.domElement.style.top = '0';
+    effect.domElement.style.left = '0';
+    effect.domElement.style.width = '100%';
+    effect.domElement.style.height = '100%';
+    effect.domElement.style.overflow = 'hidden';
 
     container.appendChild(effect.domElement);
-    window.addEventListener('resize', onWindowResize);
+
+    // Resize Observer for container
+    const resizeObserver = new ResizeObserver(() => {
+        const newWidth = container.clientWidth;
+        const newHeight = container.clientHeight;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        effect.setSize(newWidth, newHeight);
+    });
+    resizeObserver.observe(container);
+
+    // Store observer to disconnect later
+    container.resizeObserver = resizeObserver;
+
     animate();
 }
 
@@ -58,7 +80,7 @@ function resetParticle(p) {
     p.position.y = -150;
     p.position.x = (Math.random() - 0.5) * 150;
     p.position.z = (Math.random() - 0.5) * 150;
-    
+
     // Random rotation speed
     p.userData = {
         speed: Math.random() * 1 + 0.5,
@@ -66,12 +88,7 @@ function resetParticle(p) {
     };
 }
 
-function onWindowResize() {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    effect.setSize(window.innerWidth, window.innerHeight);
-}
-
+// Global resize handler removed in favor of ResizeObserver
 function animate() {
     animationId = requestAnimationFrame(animate);
 
@@ -84,7 +101,7 @@ function animate() {
         p.position.x *= 0.995;
         p.position.z *= 0.995;
 
-        if(p.position.y > 150) {
+        if (p.position.y > 150) {
             resetParticle(p);
         }
     });
@@ -92,7 +109,9 @@ function animate() {
     effect.render(scene, camera);
 }
 
-export function stop() {
-    window.removeEventListener('resize', onWindowResize);
+export function stop(container) {
+    if (container && container.resizeObserver) {
+        container.resizeObserver.disconnect();
+    }
     cancelAnimationFrame(animationId);
 }
