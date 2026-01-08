@@ -91,39 +91,15 @@
   margin-bottom: 1rem;
 }
 
-/* Optimized Text Sizes for Homepage */
-.hero-description {
-  font-size: 1.5rem !important;
-  line-height: 1.2 !important;
-}
-
-@media (min-width: 768px) {
-  .hero-description {
-    font-size: 2.25rem !important;
-  }
-}
-
+/* Search Input Sizing */
 .search-input-large {
-  font-size: 1.5rem !important;
-  padding-top: 1.5rem !important;
-  padding-bottom: 1.5rem !important;
+  font-size: 1.5rem;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 
 .search-prompt-large {
-  font-size: 1.5rem !important;
-}
-
-/* Force Zero Spacing on Title */
-.hero-title-container {
-  margin: 0 !important;
-  padding: 0 !important;
-  padding-top: 10rem !important;
-}
-
-.hero-title {
-  margin: 0 !important;
-  padding: 0 !important;
-  line-height: 0.9 !important;
+  font-size: 1.5rem;
 }
 
 /* ==============================
@@ -659,14 +635,14 @@ body {
    ============================== */
 
 .home-page {
-  height: 100vh;
-  height: 100dvh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
-  padding: 10rem 5vw 1rem;
-  overflow: hidden;
+  justify-content: center;
+  padding: 6rem 5vw 20rem;
+  /* Extra bottom padding for search results */
   box-sizing: border-box;
 }
 
@@ -675,15 +651,10 @@ body {
   max-width: 1400px;
   display: flex;
   flex-direction: column;
+  gap: 1.5rem;
   z-index: 10;
-}
-
-.home-title-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 2rem;
-  margin-bottom: 1rem;
+  margin-top: -4rem;
+  /* Offset upward for above-center positioning */
 }
 
 .home-title {
@@ -717,7 +688,7 @@ body {
   color: #888;
   line-height: 1.4;
   max-width: 1000px;
-  margin-bottom: 1rem;
+  margin: 0;
 }
 
 @media (min-width: 768px) {
@@ -730,10 +701,15 @@ body {
   width: 100%;
 }
 
-/* Responsive */
+/* Tablet */
 @media (max-width: 768px) {
   .home-page {
-    padding: 8rem 1.5rem 1rem;
+    padding: 5rem 1.5rem 18rem;
+  }
+
+  .home-container {
+    gap: 1.25rem;
+    margin-top: -5rem;
   }
 
   .home-title {
@@ -745,9 +721,15 @@ body {
   }
 }
 
+/* Mobile */
 @media (max-width: 480px) {
   .home-page {
-    padding: 7rem 1rem 0.5rem;
+    padding: 4rem 1rem 16rem;
+  }
+
+  .home-container {
+    gap: 1rem;
+    margin-top: -3rem;
   }
 
   .home-title {

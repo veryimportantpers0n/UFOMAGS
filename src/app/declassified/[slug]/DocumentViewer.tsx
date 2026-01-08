@@ -5,6 +5,7 @@ import Background from '@/components/Background';
 import DocumentCarousel from '@/components/DocumentCarousel';
 import type { DocumentWithCategory, DocumentCategory } from '@/types/document';
 import { formatAccessNotes } from '@/utils/iconMapping';
+import { generateArticleSchema } from '@/lib/seo';
 import './DocumentViewer.css';
 
 interface DocumentViewerProps {
@@ -26,8 +27,22 @@ export default function DocumentViewer({ document, category }: DocumentViewerPro
             : document.yearStart
         : null;
 
+    // Generate Article schema for SEO
+    const articleSchema = generateArticleSchema({
+        title: document.title,
+        description: document.description,
+        slug: document.slug,
+        date: document.yearStart?.toString(),
+        classification: document.accessNotes,
+    });
+
     return (
         <Background>
+            {/* JSON-LD Schema */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+            />
             <div className="document-slug-page" data-page="document-slug">
                 {/* Full-width Viewer Container */}
                 <div className="doc-slug-container">

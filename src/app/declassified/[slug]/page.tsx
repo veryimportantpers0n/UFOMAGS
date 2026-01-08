@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     }
 
     return generateSEOMetadata({
-        title: `${document.title} - Declassified Document`,
+        title: document.title,
         description: document.description,
         path: `/declassified/${document.slug}`,
     });

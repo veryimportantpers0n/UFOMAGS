@@ -5,7 +5,7 @@ import magazineData from "@/data/magazines.json";
 import { generateSEOMetadata, generateWebSiteSchema } from "@/lib/seo";
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: "PROJECT: ZETA // 2025",
+  title: "Vintage UFO Magazine Archive",
   description:
     "Browse our expanding archive of vintage British UFO magazines and if you've got an issue we don't, help us keep the collection alive!",
   path: "/",

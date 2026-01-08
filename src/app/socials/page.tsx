@@ -4,7 +4,7 @@ import Background from '@/components/Background';
 import SocialLink from '@/components/SocialLink';
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: 'Socials',
+  title: 'Connect',
   description: 'Follow OLD UFO MAGS for updates on new magazine additions, UFO history, and more.',
   path: '/socials',
 });

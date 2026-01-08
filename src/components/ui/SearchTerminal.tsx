@@ -72,25 +72,25 @@ export default function SearchTerminal({ magazines }: SearchTerminalProps) {
 
             {/* Holographic Results Dropdown */}
             {results.length > 0 && (
-                <div className="absolute top-full left-0 w-full mt-2 bg-black/90 border border-[var(--cyber-blue-dark)] backdrop-blur-md z-50 max-h-[300px] overflow-y-auto custom-scrollbar">
-                    <div className="mono text-[10px] bg-[var(--cyber-blue-dark)]/10 text-[var(--cyber-blue-dark)] px-2 py-1 border-b border-[var(--cyber-blue-dark)]/30">
+                <div className="absolute top-full left-0 w-full mt-3 bg-black/90 border border-[var(--cyber-blue-dark)] backdrop-blur-md z-50 max-h-[500px] overflow-y-auto custom-scrollbar">
+                    <div className="mono text-sm bg-[var(--cyber-blue-dark)]/10 text-[var(--cyber-blue-dark)] px-4 py-2 border-b border-[var(--cyber-blue-dark)]/30">
                         {results.length} MATCHES FOUND
                     </div>
                     {results.map((mag) => (
                         <Link
                             key={mag.id}
                             href={`/magazine/${mag.slug}`}
-                            className="block p-3 border-b border-[var(--cyber-blue-dark)]/10 hover:bg-[var(--cyber-blue-dark)]/20 transition-colors group"
+                            className="block p-4 border-b border-[var(--cyber-blue-dark)]/10 hover:bg-[var(--cyber-blue-dark)]/20 transition-colors group"
                         >
-                            <div className="flex justify-between items-baseline mb-1">
-                                <span className="mono text-[var(--cyber-blue-dark)] text-sm font-bold group-hover:text-white transition-colors">
+                            <div className="flex justify-between items-baseline mb-2">
+                                <span className="mono text-[var(--cyber-blue-dark)] text-lg font-bold group-hover:text-white transition-colors">
                                     {mag.coverName}
                                 </span>
-                                <span className="mono text-[var(--cyber-blue)] text-xs">
+                                <span className="mono text-[var(--cyber-blue)] text-base">
                                     {mag.date}
                                 </span>
                             </div>
-                            <div className="text-xs text-[#888] line-clamp-1 group-hover:text-[#ccc]">
+                            <div className="text-sm text-[#888] line-clamp-1 group-hover:text-[#ccc]">
                                 {mag.description}
                             </div>
                         </Link>
@@ -100,9 +100,9 @@ export default function SearchTerminal({ magazines }: SearchTerminalProps) {
 
             {/* No Results State */}
             {query && results.length === 0 && (
-                <div className="absolute top-full left-0 w-full mt-2 bg-black/90 border border-red-500 backdrop-blur-md z-50 p-3">
-                    <div className="mono text-red-500 text-sm">
-                        ERROR: NO SIGNAL DETECTED
+                <div className="absolute top-full left-0 w-full mt-3 bg-black/90 border border-red-500 backdrop-blur-md z-50 p-5">
+                    <div className="mono text-red-500 text-lg">
+                        NO RESULTS FOUND
                     </div>
                 </div>
             )}

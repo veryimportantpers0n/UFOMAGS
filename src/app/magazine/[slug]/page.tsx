@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
 
   return generateSEOMetadata({
-    title: `${magazine.coverName} - ${magazine.date}`,
+    title: `${magazine.coverName} (${magazine.date})`,
     description: magazine.description,
     path: `/magazine/${magazine.slug}`,
     image: magazine.coverImage,

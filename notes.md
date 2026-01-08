@@ -75,8 +75,15 @@ For the best reading experience with full page controls, open the magazine in In
 New goal
 
 
-is to add social and about to one page put the boxes each on one side. 
-
-
 Make a table at teh top of documents so you dont have to scroll down. 
 
+
+
+done:
+
+My next task is to make the social and about pages into one page, I think we call it just ABOUT and then remove the link on the navbar to "socials" as it will all be on the same page.
+WE can delete anythign that had to do with the old SOCIAL page, and on the about we  put the boxes each on one side. So the about page contiaaners on the left and the socials on the right. so the page is still dynamic to the screen of all sizes but not scrollable. WE might have to make the about boxes not as long so they both fit in nice though. 
+
+I would like to keep all the desings the same just put both these pages into one, delte the link from the navbar and any old pages or files related to the socials we dont need anymore becuase its all on the about page now. 
+
+Can you make a implmentation plan for this and do the reserach on everything we need to chage please! 

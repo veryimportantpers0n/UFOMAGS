@@ -7,8 +7,8 @@ interface SEOConfig {
   image?: string;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oldufomags.com';
-const SITE_NAME = 'OLD UFO MAGS';
+export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oldufomags.com';
+export const SITE_NAME = 'OLD UFO MAGS';
 
 export function generateSEOMetadata({
   title,
@@ -86,3 +86,76 @@ export function generateCreativeWorkSchema(magazine: {
     },
   };
 }
+
+/**
+ * Generate CollectionPage schema for /magazines
+ */
+export function generateCollectionPageSchema(itemCount: number) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Magazine Archive',
+    description: 'Browse our complete collection of vintage UFO magazines from the 1990s.',
+    url: `${SITE_URL}/magazines`,
+    isPartOf: {
+      '@type': 'WebSite',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    about: {
+      '@type': 'Thing',
+      name: 'UFO Magazines',
+      description: 'Vintage UFO and paranormal publications from the 1990s',
+    },
+    numberOfItems: itemCount,
+  };
+}
+
+/**
+ * Generate Organization schema for /about
+ */
+export function generateOrganizationSchema() {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: `${SITE_URL}/og-image.jpg`,
+    description: 'A non-profit digital archive dedicated to preserving vintage UFO magazines from the 1990s.',
+    sameAs: [
+      'https://twitter.com/oldufomags',
+      'https://youtube.com/@oldufomags',
+    ],
+    foundingDate: '2025',
+    knowsAbout: ['UFO', 'Paranormal', 'Vintage Magazines', 'Digital Archives'],
+  };
+}
+
+/**
+ * Generate Article schema for /declassified/[slug]
+ */
+export function generateArticleSchema(document: {
+  title: string;
+  description: string;
+  slug: string;
+  date?: string;
+  classification?: string;
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: document.title,
+    description: document.description,
+    url: `${SITE_URL}/declassified/${document.slug}`,
+    datePublished: document.date || undefined,
+    publisher: {
+      '@type': 'Organization',
+      name: SITE_NAME,
+      url: SITE_URL,
+    },
+    isAccessibleForFree: true,
+    genre: 'Declassified Government Document',
+    keywords: ['UFO', 'declassified', 'government documents', document.classification || 'unclassified'].filter(Boolean),
+  };
+}
+

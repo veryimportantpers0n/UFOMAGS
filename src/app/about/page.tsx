@@ -1,18 +1,25 @@
 import { Metadata } from 'next';
-import { generateSEOMetadata } from '@/lib/seo';
+import { generateSEOMetadata, generateOrganizationSchema } from '@/lib/seo';
 import Background from '@/components/Background';
 import SocialLink from '@/components/SocialLink';
 import AbductionBeam from '@/components/AbductionBeam';
 
 export const metadata: Metadata = generateSEOMetadata({
-  title: 'About',
+  title: 'About Us',
   description: 'Learn about OLD UFO MAGS, a non-profit digital archive dedicated to preserving vintage UFO magazines from the 1990s.',
   path: '/about',
 });
 
 export default function AboutPage() {
+  const organizationSchema = generateOrganizationSchema();
+
   return (
     <Background>
+      {/* JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
       <div className="about-page">
         <div className="about-container">
 
@@ -83,3 +90,4 @@ export default function AboutPage() {
     </Background>
   );
 }
+

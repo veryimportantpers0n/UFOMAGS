@@ -6,9 +6,19 @@ import MagazineCard from '@/components/MagazineCard';
 import magazineData from '@/data/magazines.json';
 import type { Magazine } from '@/types/magazine';
 
+// Helper function to extract year from date string (e.g., "Nov/Dec 1997" -> 1997)
+const getYearFromDate = (dateStr: string): number => {
+  const match = dateStr.match(/\d{4}/);
+  return match ? parseInt(match[0], 10) : 0;
+};
+
 export default function MagazinesClient() {
   const router = useRouter();
-  const magazines: Magazine[] = magazineData.magazines;
+
+  // Sort magazines by date (newest first)
+  const magazines: Magazine[] = [...magazineData.magazines].sort((a, b) => {
+    return getYearFromDate(b.date) - getYearFromDate(a.date);
+  });
 
   const handleMagazineClick = (slug: string) => {
     router.push(`/magazine/${slug}`);
@@ -25,7 +35,7 @@ export default function MagazinesClient() {
               <h1 className="magazine-page-title">MAGAZINE ARCHIVE</h1>
             </div>
             <div className="mono magazine-count">
-              RECORDS FOUND: [{magazines.length}] // DECRYPTING...
+              ARCHIVED PUBLICATIONS: [{magazines.length}]
             </div>
           </header>
 
@@ -39,53 +49,6 @@ export default function MagazinesClient() {
                 isLocked={false}
               />
             ))}
-
-            {/* Coming Soon Locked Cards - Add 3 placeholders */}
-            <MagazineCard
-              magazine={{
-                id: 'locked-1',
-                coverName: 'Data Corrupted',
-                slug: '',
-                issueNumber: '???',
-                date: '??? ????',
-                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                coverImage: '',
-                archiveUrl: '',
-                customText: '',
-              } as Magazine}
-              onClick={() => { }}
-              isLocked={true}
-            />
-            <MagazineCard
-              magazine={{
-                id: 'locked-2',
-                coverName: 'Data Corrupted',
-                slug: '',
-                issueNumber: '???',
-                date: '??? ????',
-                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                coverImage: '',
-                archiveUrl: '',
-                customText: '',
-              } as Magazine}
-              onClick={() => { }}
-              isLocked={true}
-            />
-            <MagazineCard
-              magazine={{
-                id: 'locked-3',
-                coverName: 'Data Corrupted',
-                slug: '',
-                issueNumber: '???',
-                date: '??? ????',
-                description: 'This file is currently being digitized. Uplink pending. Check back for decryption key later.',
-                coverImage: '',
-                archiveUrl: '',
-                customText: '',
-              } as Magazine}
-              onClick={() => { }}
-              isLocked={true}
-            />
           </div>
         </div>
       </div>

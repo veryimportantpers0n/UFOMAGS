@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import magazinesData from '@/data/magazines.json';
+import { allDocuments } from '@/data/documents';
 
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://oldufomags.com';
 
@@ -26,6 +27,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/declassified`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.9,
+    },
+    {
       url: `${SITE_URL}/about`,
       lastModified: new Date(),
       changeFrequency: 'monthly' as const,
@@ -47,5 +54,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...magazinePages];
+  // Declassified document pages
+  const declassifiedPages = allDocuments.map((doc) => ({
+    url: `${SITE_URL}/declassified/${doc.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...magazinePages, ...declassifiedPages];
 }
+
