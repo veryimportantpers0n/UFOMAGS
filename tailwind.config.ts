@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'cyber-blue-dark': '#00adb5',
-        'cyber-blue': '#00f3ff',
-        'void-black': '#050505',
-        'deep-space': '#0a0a0f',
+        'cyber-blue-dark': 'var(--cyber-blue-dark)',
+        'cyber-blue': 'var(--cyber-blue)',
+        'void-black': 'var(--void-black)',
+        'deep-space': 'var(--deep-space)',
       },
       fontFamily: {
         mono: ['var(--font-jetbrains-mono)', 'monospace'],

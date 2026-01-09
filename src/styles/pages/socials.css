@@ -1,0 +1,150 @@
+/* ==============================
+   SOCIALS PAGE STYLES
+   ============================== */
+
+/* .socials-page removed */
+
+/* --- LINKS CONTAINER --- */
+.links-container {
+    width: 100%;
+    max-width: 800px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    z-index: 10;
+}
+
+/* --- LINK CARD --- */
+.link-card {
+    background: rgba(10, 10, 15, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem;
+    text-decoration: none;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    cursor: crosshair;
+}
+
+.link-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--cyber-blue);
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.link-card:hover {
+    border-color: var(--cyber-blue);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.15);
+}
+
+.link-card:hover::before {
+    opacity: 1;
+}
+
+.icon-box {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(0, 0, 0, 0.3);
+    flex-shrink: 0;
+}
+
+.icon-box svg {
+    width: 36px;
+    height: 36px;
+}
+
+.card-content h3 {
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-content p {
+    font-size: 1.1rem;
+    color: #aaa;
+    line-height: 1.4;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+    .socials-page {
+        padding: 3rem 1rem 0.5rem;
+    }
+
+    .links-container {
+        gap: 1rem;
+    }
+
+    .link-card {
+        padding: 1.25rem 1.5rem;
+        gap: 1.25rem;
+    }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+    }
+
+    .icon-box svg {
+        width: 30px;
+        height: 30px;
+    }
+
+    .card-content h3 {
+        font-size: 1.25rem;
+    }
+
+    .card-content p {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .socials-page {
+        padding: 2.5rem 0.75rem 0.5rem;
+    }
+
+    .links-container {
+        gap: 0.75rem;
+    }
+
+    .link-card {
+        padding: 1rem;
+        gap: 1rem;
+    }
+
+    .icon-box {
+        width: 50px;
+        height: 50px;
+    }
+
+    .icon-box svg {
+        width: 26px;
+        height: 26px;
+    }
+
+    .card-content h3 {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .card-content p {
+        font-size: 0.85rem;
+        line-height: 1.3;
+    }
+}

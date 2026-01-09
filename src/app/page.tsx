@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import TextScramble from "@/components/ui/TextScramble";
+import HeroTitle from "@/components/ui/HeroTitle";
 import SearchTerminal from "@/components/ui/SearchTerminal";
 import magazineData from "@/data/magazines.json";
 import { generateSEOMetadata, generateWebSiteSchema } from "@/lib/seo";
@@ -23,11 +23,7 @@ export default function Home() {
       />
 
       <div className="home-container">
-        <h1 className="home-title">
-          <TextScramble text="THEY ARE" className="block" />
-          <TextScramble text="WATCHING" className="block gradient-text" />
-          <TextScramble text="YOU" hoverText="THEM" className="block" />
-        </h1>
+        <HeroTitle />
 
         <p className="home-description">
           Browse our expanding archive of vintage British UFO magazines and if you have an issue we're missing, help us keep the collection alive!

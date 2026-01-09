@@ -18,7 +18,9 @@ Things to do:
 
 Make a login page so i can share it and nobody can see.
 
+MAKE A UK AND US SECTION IN THE MAGAZINE PAGE
 
+change ":: RESTRICTED ACCESS"
 
 FERSH SSITE DESIGN:
 

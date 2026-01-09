@@ -73,24 +73,24 @@ export default function SearchTerminal({ magazines }: SearchTerminalProps) {
             {/* Holographic Results Dropdown */}
             {results.length > 0 && (
                 <div className="absolute top-full left-0 w-full mt-3 bg-black/90 border border-[var(--cyber-blue-dark)] backdrop-blur-md z-50 max-h-[500px] overflow-y-auto custom-scrollbar">
-                    <div className="mono text-sm bg-[var(--cyber-blue-dark)]/10 text-[var(--cyber-blue-dark)] px-4 py-2 border-b border-[var(--cyber-blue-dark)]/30">
+                    <div className="mono text-base md:text-lg bg-[var(--cyber-blue-dark)]/10 text-[var(--cyber-blue-dark)] px-5 py-3 border-b border-[var(--cyber-blue-dark)]/30">
                         {results.length} MATCHES FOUND
                     </div>
                     {results.map((mag) => (
                         <Link
                             key={mag.id}
                             href={`/magazine/${mag.slug}`}
-                            className="block p-4 border-b border-[var(--cyber-blue-dark)]/10 hover:bg-[var(--cyber-blue-dark)]/20 transition-colors group"
+                            className="block p-5 border-b border-[var(--cyber-blue-dark)]/10 hover:bg-[var(--cyber-blue-dark)]/20 transition-colors group"
                         >
                             <div className="flex justify-between items-baseline mb-2">
-                                <span className="mono text-[var(--cyber-blue-dark)] text-lg font-bold group-hover:text-white transition-colors">
+                                <span className="mono text-lg md:text-xl lg:text-2xl text-[var(--cyber-blue-dark)] font-bold group-hover:text-white transition-colors">
                                     {mag.coverName}
                                 </span>
-                                <span className="mono text-[var(--cyber-blue)] text-base">
+                                <span className="mono text-base md:text-lg lg:text-xl text-[var(--cyber-blue)]">
                                     {mag.date}
                                 </span>
                             </div>
-                            <div className="text-sm text-[#888] line-clamp-1 group-hover:text-[#ccc]">
+                            <div className="text-base md:text-lg text-[#888] line-clamp-1 group-hover:text-[#ccc]">
                                 {mag.description}
                             </div>
                         </Link>

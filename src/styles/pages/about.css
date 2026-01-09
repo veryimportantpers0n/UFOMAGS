@@ -1,0 +1,230 @@
+/* ==============================
+   ABOUT PAGE STYLES
+   ============================== */
+
+.about-page {
+    height: 100vh;
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1.5rem 1rem;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+.about-container {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    z-index: 10;
+}
+
+@media (min-width: 1024px) {
+    .about-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+        /* align-items: start; REMOVED to allow stretching */
+    }
+}
+
+.about-column {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    height: 100%;
+    /* Ensure it fills the grid cell */
+}
+
+.about-column.right-column {
+    justify-content: space-between;
+}
+
+/* --- DOSSIER CARD --- */
+.dossier-card {
+    background: rgba(10, 15, 20, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2rem 3rem;
+    backdrop-filter: blur(10px);
+    position: relative;
+    transition: 0.3s;
+}
+
+/* Tech Corners */
+.dossier-card::after {
+    content: '';
+    position: absolute;
+    top: -1px;
+    right: -1px;
+    width: 16px;
+    height: 16px;
+    border-top: 2px solid var(--cyber-blue-dark);
+    border-right: 2px solid var(--cyber-blue-dark);
+}
+
+.dossier-card::before {
+    content: '';
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    width: 16px;
+    height: 16px;
+    border-bottom: 2px solid var(--cyber-blue-dark);
+    border-left: 2px solid var(--cyber-blue-dark);
+}
+
+.dossier-card:hover {
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 25px rgba(0, 173, 181, 0.08);
+}
+
+.dossier-header {
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    color: var(--cyber-blue);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.dossier-header::before {
+    content: '>';
+    margin-right: 8px;
+    color: var(--cyber-blue-dark);
+}
+
+.dossier-header.orange {
+    color: var(--alert-orange);
+}
+
+.dossier-title {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+    color: white;
+    font-weight: 700;
+}
+
+.dossier-text {
+    color: #aaa;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+}
+
+.dossier-text:last-child {
+    margin-bottom: 0;
+}
+
+/* --- MISSION LIST --- */
+.mission-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.mission-list li {
+    padding-left: 2rem;
+    position: relative;
+    margin-bottom: 0.75rem;
+    color: #ccc;
+    font-size: 1.1rem;
+}
+
+.mission-list li::before {
+    content: '[+]';
+    position: absolute;
+    left: 0;
+    color: var(--cyber-blue-dark);
+    font-family: var(--font-jetbrains-mono), 'JetBrains Mono', monospace;
+    font-size: 0.85rem;
+    top: 3px;
+}
+
+/* --- ABOUT RESPONSIVE --- */
+@media (max-width: 1024px) {
+    .about-container {
+        max-width: 900px;
+    }
+
+    .dossier-card {
+        padding: 1.75rem 2.5rem;
+    }
+
+    .dossier-title {
+        font-size: 1.4rem;
+    }
+
+    .dossier-text {
+        font-size: 1rem;
+    }
+
+    .mission-list li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .about-page {
+        padding: 3rem 1rem 0.5rem;
+    }
+
+    .about-container {
+        gap: 0.75rem;
+    }
+
+    .dossier-card {
+        padding: 1.5rem 1.75rem;
+    }
+
+    .dossier-title {
+        font-size: 1.25rem;
+    }
+
+    .dossier-text {
+        font-size: 0.95rem;
+    }
+
+    .mission-list li {
+        font-size: 0.95rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .about-page {
+        padding: 2.5rem 0.75rem 0.5rem;
+    }
+
+    .about-container {
+        gap: 0.5rem;
+    }
+
+    .dossier-card {
+        padding: 1.25rem 1.5rem;
+    }
+
+    .dossier-header {
+        font-size: 0.75rem;
+    }
+
+    .dossier-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .dossier-text {
+        font-size: 0.85rem;
+        margin-bottom: 0.5rem;
+        line-height: 1.4;
+    }
+
+    .mission-list li {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+}
